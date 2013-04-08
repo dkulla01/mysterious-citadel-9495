@@ -213,7 +213,7 @@ $app_name = idx($app_info, 'name', '');
       <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
 
       <div>
-        <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?></strong>, you tweaking fool.</h1>
+        <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?></strong>, you damn tweaking fool.</h1>
         <p class="tagline">
           This is your app
           <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
