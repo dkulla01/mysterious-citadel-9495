@@ -61,6 +61,8 @@ if ($user_id) {
   // This fetches 4 of your friends.
   $links = idx($facebook->api('/me/links?limit=10'), 'data', array());
 
+  $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
+
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
   $app_using_friends = $facebook->api(array(
@@ -227,10 +229,9 @@ $app_name = idx($app_info, 'name', '');
     ?>
 
     <section id="samples" class="clearfix">
-      <h1>Examples of the Facebook Graph API</h1>
+      <h1>Recent Links</h1>
 
       <div class="list">
-        <h3>Recent Links</h3>
         <ul class="friends">
           <?php
             foreach ($links as $link) {
@@ -247,6 +248,29 @@ $app_name = idx($app_info, 'name', '');
           ?>
         </ul>
       </div>
+ 
+      <div class="list">
+        <h3>A few of your friends</h3>
+        <ul class="friends">
+          <?php
+            foreach ($friends as $friend) {
+              // Extract the pieces of info we need from the requests above
+              $id = idx($friend, 'id');
+              $name = idx($friend, 'name');
+          ?>
+          <li>
+            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
+              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
+              <?php echo he($name); ?>
+            </a>
+          </li>
+          <?php
+            }
+          ?>
+        </ul>
+      </div>
+ 
+      
     </section>
 
     <?php
