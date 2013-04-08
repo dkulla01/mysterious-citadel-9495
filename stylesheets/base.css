@@ -284,7 +284,6 @@ header .tagline {
   display: block;
   font-size: 11px;
   font-weight: bold;
-  height: 32px;
   margin-bottom: 11px;
   overflow: hidden;
   position: relative;
@@ -294,7 +293,7 @@ header .tagline {
 #samples li a:visited {
   color: #7c7c7c;
   display: block;
-  line-height: 32px;
+  line-height: 12px;
   padding-left: 36px;
 }
 
