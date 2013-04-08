@@ -59,8 +59,8 @@ if ($user_id) {
   // Explorer" which is at https://developers.facebook.com/tools/explorer/
 
   // This fetches 4 of your friends.
-  $links = idx($facebook->api('/me/links?limit=10'), 'data', array());
-  //$links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
+  //$links = idx($facebook->api('/me/links?limit=10'), 'data', array());
+  $links = idx($facebook->api('/me?fields=links.limit(5)'), 'data', array());
 
   $friends = idx($facebook->api('/me/friends?limit=50'), 'data', array());
 
