@@ -62,7 +62,7 @@ if ($user_id) {
   $links = idx($facebook->api('/me/links?limit=10'), 'data', array());
   //$links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
 
-  $friends = idx($facebook->api('/me/friends?limit=25'), 'data', array());
+  $friends = idx($facebook->api('/me/friends?limit=5'), 'data', array());
 
   foreach ($friends as $friend) {
 	  
@@ -115,62 +115,6 @@ $app_name = idx($app_info, 'name', '');
     <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
 
     <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
-
-    <script type="text/javascript">
-      function logResponse(response) {
-        if (console && console.log) {
-          console.log('The response was', response);
-        }
-      }
-
-      $(function(){
-        // Set up so we handle click on the buttons
-        $('#postToWall').click(function() {
-          FB.ui(
-            {
-              method : 'feed',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        });
-
-        $('#sendToFriends').click(function() {
-          FB.ui(
-            {
-              method : 'send',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        });
-
-        $('#sendRequest').click(function() {
-          FB.ui(
-            {
-              method  : 'apprequests',
-              message : $(this).attr('data-message')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        });
-      });
-    </script>
 
     <!--[if IE]>
       <script type="text/javascript">
