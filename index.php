@@ -57,13 +57,9 @@ if ($user_id) {
   // This fetches some things that you like . 'limit=*" only returns * values.
   // To see the format of the data you are retrieving, use the "Graph API
   // Explorer" which is at https://developers.facebook.com/tools/explorer/
-  $likes = idx($facebook->api('/me/likes?limit=4'), 'data', array());
 
   // This fetches 4 of your friends.
-  $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
-
-  // And this returns 16 of your photos.
-  $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
+  $friends = idx($facebook->api('/me/links?limit=10'), 'data', array());
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
@@ -234,18 +230,16 @@ $app_name = idx($app_info, 'name', '');
       <h1>Examples of the Facebook Graph API</h1>
 
       <div class="list">
-        <h3>A few of your friends</h3>
+        <h3>Recent Links</h3>
         <ul class="friends">
           <?php
-            foreach ($friends as $friend) {
+            foreach ($links as $link) {
               // Extract the pieces of info we need from the requests above
-              $id = idx($friend, 'id');
-              $name = idx($friend, 'name');
+              $url = idx($link, 'link');
           ?>
           <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-              <?php echo he($name); ?>
+            <a href="<?php echo he($url); ?>" target="_blank">
+              <?php echo he($url); ?>
             </a>
           </li>
           <?php
