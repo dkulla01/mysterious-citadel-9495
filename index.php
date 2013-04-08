@@ -267,7 +267,7 @@ $app_name = idx($app_info, 'name', '');
             </a>
           </li>
           <?php
-            }
+            //}
           ?>
         </ul>
       </div> -->
