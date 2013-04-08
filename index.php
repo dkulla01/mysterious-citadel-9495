@@ -59,9 +59,10 @@ if ($user_id) {
   // Explorer" which is at https://developers.facebook.com/tools/explorer/
 
   // This fetches 4 of your friends.
-  $links = idx($facebook->api('/me/links?limit=10'), 'data', array());
+  //$links = idx($facebook->api('/me/links?limit=10'), 'data', array());
+  $links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
 
-  $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
+  $friends = idx($facebook->api('/me/friends?limit=50'), 'data', array());
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
@@ -232,22 +233,44 @@ $app_name = idx($app_info, 'name', '');
       <h1>Recent Links</h1>
 
       <div class="list">
-        <ul class="friends">
+        <ol class="friends">
           <?php
             foreach ($links as $link) {
               // Extract the pieces of info we need from the requests above
               $url = idx($link, 'link');
+              $name = idx($link, 'name');
           ?>
           <li>
             <a href="<?php echo he($url); ?>" target="_blank">
-              <?php echo he($url); ?>
+              <?php echo he($name); ?>
+            </a>
+          </li>
+          <?php
+            }
+          ?>
+        </ol>
+      </div>
+<!--
+      <h1>Friends Links</h1>
+
+      <div class="list">
+        <ul class="friends">
+          <?php
+            //foreach ($links as $link) {
+              // Extract the pieces of info we need from the requests above
+            //  $url = idx($link, 'link');
+            //  $name = idx($link, 'name');
+          ?>
+          <li>
+            <a href="<?php //echo he($url); ?>" target="_blank">
+              <?php //echo he($name); ?>
             </a>
           </li>
           <?php
             }
           ?>
         </ul>
-      </div>
+      </div> -->
       
     </section>
 
