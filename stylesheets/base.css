@@ -265,17 +265,13 @@ header .tagline {
 }
 
 #samples h3 {
-  background: url("../images/header-sketch.png") no-repeat;
   color: #646464;
   font-weight: bold;
   font-size: 11px;
   line-height: 29px;
-  text-align: center;
 }
 
 #samples ul {
-  background: url("../images/picture-sketch.png") 4px 8px;
-  background-repeat: repeat-y;
   height: 161px;
   overflow: hidden;
   padding-top: 8px;
