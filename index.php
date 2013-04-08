@@ -63,7 +63,7 @@ if ($user_id) {
   //$links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
 
   $friends = idx($facebook->api('/me/friends?limit=5'), 'data', array());
-
+/*
   foreach ($friends as $friend) {
 	  
       $id = idx($friend, 'id');	
@@ -72,7 +72,7 @@ if ($user_id) {
       
 	  $friend['shlink'] = $link;
   }
-
+*/
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
   $app_using_friends = $facebook->api(array(
@@ -211,13 +211,13 @@ $app_name = idx($app_info, 'name', '');
           <?php
             foreach ($friends as $friend) {
               // Extract the pieces of info we need from the requests above
-              $url = idx($friend, 'shlink');
+              //$url = idx($friend, 'shlink');
               $name = idx($friend, 'name');
           ?>
           <li>
-            <a href="<?php echo he($url); ?>" target="_blank">
-              <?php echo he($name) . ' ' . he($url); ?>
-            </a>
+            <!--<a href="<?php //echo he($url); ?>" target="_blank">-->
+              <?php echo he($name);// . ' ' . he($url); ?>
+           <!-- </a> -->
           </li>
           <?php
             }
