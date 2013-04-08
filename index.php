@@ -59,7 +59,7 @@ if ($user_id) {
   // Explorer" which is at https://developers.facebook.com/tools/explorer/
 
   // This fetches 4 of your friends.
-  $friends = idx($facebook->api('/me/links?limit=10'), 'data', array());
+  $links = idx($facebook->api('/me/links?limit=10'), 'data', array());
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
