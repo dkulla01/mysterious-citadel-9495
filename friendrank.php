@@ -29,16 +29,16 @@ class AyFbFriendRank
 {
 	private $criteria					= array
 	(
-		'feed_like'						=> 1,
-		'feed_comment'					=> 1,
-		'feed_addressed'				=> 1,
+		'feed_like'						=> .2,
+		'feed_comment'					=> .5,
+		'feed_addressed'				=> .5,
 		'photo_tagged_friend_by_user'	=> 1,
 		'photo_tagged_user_by_friend'	=> 1,
-		'photo_like'					=> 1,
-		'photo_comment'					=> 1,
+		'photo_like'					=> .5,
+		'photo_comment'					=> .5,
 		'friend_mutual'					=> .125,
 		'inbox_in_conversation'			=> .5,
-		'inbox_chat'					=> .125
+		'inbox_chat'					=> .5
 	);
 
 	private $fb;
@@ -109,17 +109,13 @@ class AyFbFriendRank
 
 		if(empty($response['inbox']['error']))
 		{
-			
 
-				$totals = 0;
 			foreach($response['inbox']['data'] as $thread)
 			{
 				
 
 				//doulouge, nothing else
 				//if(count($thread['recent_authors'])==2) {
-
-					$totals++;
 					//echo($thread['message_count'] . '/');
 					foreach($thread['participants'] as $author) {
 						if(!empty($this->friends[$author['user_id']])) $friend = $author['user_id'];
@@ -151,7 +147,6 @@ class AyFbFriendRank
 								
 				}
 			}
-							echo('///////' . $totals . '/');
 		}
 
 	/*	if(empty($response['mutual_friends']['error']))
