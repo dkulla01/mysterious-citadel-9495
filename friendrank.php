@@ -117,7 +117,7 @@ class AyFbFriendRank
 					$recent_authors = $thread['recent_authors'];
 					if($viewer == $recent_authors[0]) $friend = $recent_authors[0];
 					else $friend = $recent_authors[1];
-					echo($friend . '/');
+					echo($viewer . '/');
 				}
 				
 				
