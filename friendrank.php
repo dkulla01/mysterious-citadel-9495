@@ -119,13 +119,13 @@ class AyFbFriendRank
 			}
 		}
 
-		if(empty($response['mutual_friends']['error']))
+	/*	if(empty($response['mutual_friends']['error']))
 		{
 			foreach($response['mutual_friends']['data'] as $friend)
 			{			
 				$this->giveCriteriaScore($friend['uid'], 'friend_mutual', $friend['mutual_friend_count']);
 			}
-		}
+		}*/
 
 		// handle photos
 		$batch			= array();
