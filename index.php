@@ -64,7 +64,8 @@ if ($user_id) {
 
   //$friends = idx($facebook->api('/me/friends?limit=5'), 'data', array());
   $friends = $facebook->api('/me', array('fields' => 'friends.limit(5).fields(links.limit(1))'));
-  print_r($friends);
+  $something = $friends['friends']['data'];
+  print_r($something);
 
   foreach ($friends as $friend) {
 	  
