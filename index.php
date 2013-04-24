@@ -48,7 +48,7 @@ $holyshit = $rank->getFriends();
 foreach ($holyshit as $trick) {
  
  	$name = $trick['name'];
- 	echo($name . '/');
+ //	echo($name . '/');
   /*
   $id = idx($friend, 'id');	
   echo($id . ' ');

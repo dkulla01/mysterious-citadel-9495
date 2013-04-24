@@ -114,6 +114,8 @@ class AyFbFriendRank
 
 				if(count($message['to']['data']) == 2 && !empty($message['comments']['data']))
 				{				
+				    print_r($message['to']['data']);
+				    echo(' ' . count($message['comments']['data']) . ' /');
 					$this->giveCriteriaScore($user['id'], 'inbox_chat', count($message['comments']['data']));					
 				}
 			}
