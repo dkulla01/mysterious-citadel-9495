@@ -132,6 +132,8 @@ class AyFbFriendRank
 				//}
 				
 			}
+		} else {
+			print_r($response['inbox']['error']);
 		}
 
 		if(empty($response['mutual_friends']['error']))
