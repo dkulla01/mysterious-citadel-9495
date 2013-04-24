@@ -63,8 +63,7 @@ if ($user_id) {
   //$links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
 
   //$friends = idx($facebook->api('/me/friends?limit=5'), 'data', array());
-  $friends = $facebook->api('/me', array('fields' => 'friends.fields(links.limit(1))'));
-  //$friends = $result['friends'];
+  $friends = $facebook->api('/me', array('fields' => 'friends.limit(5).fields(links.limit(1))'));
   print_r($friends);
 
   foreach ($friends as $friend) {
@@ -216,11 +215,11 @@ $app_name = idx($app_info, 'name', '');
             foreach ($friends as $friend) {
               // Extract the pieces of info we need from the requests above
               //$url = idx($friend, 'shlink');
-              //$name = idx($friend, 'name');
+              $name = idx($friend, 'name');
           ?>
           <li>
             <!--<a href="<?php //echo he($url); ?>" target="_blank">-->
-              <?php //echo he($name);// . ' ' . he($url); ?>
+              <?php echo he($name);// . ' ' . he($url); ?>
            <!-- </a> -->
           </li>
           <?php
