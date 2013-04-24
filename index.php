@@ -43,7 +43,7 @@ $facebook = new Facebook(array(
 ));
 
 
-//$rank = new AyFbFriendRank($facebook);
+$rank = new AyFbFriendRank($facebook);
 
 
 $user_id = $facebook->getUser();
