@@ -62,9 +62,9 @@ if ($user_id) {
   $links = idx($facebook->api('/me/links?limit=10'), 'data', array());
   //$links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
 
-  $friends = idx($facebook->api('/me/friends?limit=5/links?limit=10'), 'data', array());
-  $flinks = idx($facebook->api('/me/friends', array('fields' => 'limit(10),links.limit=10')));
-  print_r($flinks);
+  $friends = idx($facebook->api('/me/friends?limit=5'), 'data', array());
+  //$flinks = idx($facebook->api('/me/friends', array('fields' => 'limit(10),links.limit=10')));
+  //print_r($flinks);
 /*
   foreach ($friends as $friend) {
 	  
