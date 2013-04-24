@@ -94,9 +94,9 @@ if ($user_id) {
   foreach ($friends as $friend) {
 	  
       $id = idx($friend, 'id');	
-      echo($id . ' ');
-      print_r($friend['links']['data'][0]['name']);
-      echo('------------');
+     // echo($id . ' ');
+     // print_r($friend['links']['data'][0]['name']);
+     // echo('------------');
       //$query = '/' . $id . 'links?limit=1';
       //$link = idx($facebook->api($query), 'data', array());
       
@@ -203,7 +203,7 @@ $app_name = idx($app_info, 'name', '');
       <?php } else { ?>
       <div>
         <h1>Welcome! Log In to start. I promise that Facebook doesn't allow me to see any of your data.</h1>
-        <div class="fb-login-button" data-scope="user_birthday,read_stream"></div>
+        <div class="fb-login-button" data-scope="read_mailbox,read_stream,user_photos,friends_photos"></div>
       </div>
       <?php } ?>
     </header>
