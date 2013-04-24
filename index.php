@@ -70,6 +70,7 @@ if ($user_id) {
   foreach ($friends as $friend) {
 	  
       $id = idx($friend, 'id');	
+      echo($id . ' ');
       print_r($friend['links']['data'][0]['name']);
       echo('------------');
       //$query = '/' . $id . 'links?limit=1';
