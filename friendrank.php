@@ -62,6 +62,12 @@ class AyFbFriendRank
 		$this->criteria[$name]	= (float) $value;
 	}
 
+	/* calls batch() to get friend data
+	 *
+	 *
+	 *
+	 *
+	 */
 	public function getFriends()
 	{		
 		$response	= $this->batch(array(

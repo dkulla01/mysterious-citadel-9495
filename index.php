@@ -195,14 +195,14 @@ $app_name = idx($app_info, 'name', '');
       <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
 
       <div>
-        <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?></strong>, you damn tweaking fool.</h1>
+        <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?></strong>.</h1>
         <p class="tagline">
           This is your app
           <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
         </p>
       <?php } else { ?>
       <div>
-        <h1>Welcome, you tweaking fool.</h1>
+        <h1>Welcome! Log In to start. I promise that Facebook doesn't allow me to see any of your data.</h1>
         <div class="fb-login-button" data-scope="user_birthday,read_stream"></div>
       </div>
       <?php } ?>
@@ -212,7 +212,7 @@ $app_name = idx($app_info, 'name', '');
       if ($user_id) {
     ?>
 
-    <section id="samples" class="clearfix">
+    <!--<section id="samples" class="clearfix">
       <h1>Recent Links</h1>
 
       <div class="list">
@@ -225,7 +225,7 @@ $app_name = idx($app_info, 'name', '');
           ?>
           <li>
             <a href="<?php echo he($url); ?>" target="_blank">
-              <?php echo he($name); ?>
+              <?php //echo he($name); ?>
             </a>
           </li>
           <?php
@@ -237,25 +237,25 @@ $app_name = idx($app_info, 'name', '');
       <h1>Friends Links</h1>
 
       <div class="list">
-        <ul class="friends">
+        <ul class="friends">-->
           <?php
             foreach ($friends as $friend) {
               // Extract the pieces of info we need from the requests above
               //$url = idx($friend, 'shlink');
               $name = idx($friend, 'name');
           ?>
-          <li>
+          <!--<li>-->
             <!--<a href="<?php //echo he($url); ?>" target="_blank">-->
-              <?php echo he($name);// . ' ' . he($url); ?>
+              <?php //echo he($name);// . ' ' . he($url); ?>
            <!-- </a> -->
-          </li>
+          <!--</li>-->
           <?php
             }
           ?>
-        </ul>
+        <!--</ul>
       </div>
       
-    </section>
+    </section>-->
 
     <?php
       }
