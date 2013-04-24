@@ -71,7 +71,7 @@ if ($user_id) {
 	  
       $id = idx($friend, 'id');	
       print_r($friend['links']);
-      echo('\n\n');
+      echo('------------');
       //$query = '/' . $id . 'links?limit=1';
       //$link = idx($facebook->api($query), 'data', array());
       
