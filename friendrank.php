@@ -103,7 +103,7 @@ class AyFbFriendRank
 			$this->friends[$friend['uid']]['weight']	= $weight_template;
 		}
 
-		print_r($this->$friends);
+		print_r($this->friends);
 
 		if(empty($response['inbox']['error']))
 		{
