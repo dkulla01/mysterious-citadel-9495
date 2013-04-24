@@ -76,7 +76,7 @@ class AyFbFriendRank
 			'mutual_friends'	=> 'fql?q=SELECT uid, mutual_friend_count FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())',
 			'feed'				=> 'fql?q=SELECT actor_id, target_id, likes, comments FROM stream WHERE source_id=me() LIMIT 500',
 			'albums'			=> 'fql?q=SELECT aid FROM album WHERE owner=me()',
-			'inbox'				=> 'me/inbox'
+			'inbox'				=> 'fql?q=SELECT viewer_id,recent_authors,message_count FROM thread WHERE folder_id = 0'
 			/*array
 			(
 				'name'			=> 'photos',
@@ -102,18 +102,26 @@ class AyFbFriendRank
 			$this->friends[$friend['uid']]				= $friend;
 			$this->friends[$friend['uid']]['weight']	= $weight_template;
 		}
-
-		print_r($this->friends);
-		
-		
-		foreach($this->friends as $friend) {
-			echo($this->friends[$friend['uid']]['name'] . '/');
-		}
+	
+		//foreach($this->friends as $friend) {
+		//	echo($this->friends[$friend['uid']]['name'] . '/');
+		//}
 
 		if(empty($response['inbox']['error']))
 		{
-			foreach($response['inbox']['data'] as $message)
+			foreach($response['inbox']['data'] as $thread)
 			{
+				if(count($thread['recent_authors'])==2) {
+					
+					$viewer = $thread['viewer_id'];
+					$recent_authors = $thread['recent_authors'];
+					if($viewer == $recent_authors[0]) $friend = $recent_authors[0];
+					else $friend = $recent_authors[1];
+					echo($this->friends[$friend]['name'] . '/');
+				}
+				
+				
+				
 				foreach($message['to']['data'] as $user)
 				{
 					$this->giveCriteriaScore($user['id'], 'inbox_in_conversation');
