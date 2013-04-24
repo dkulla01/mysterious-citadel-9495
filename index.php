@@ -45,7 +45,22 @@ $facebook = new Facebook(array(
 
 $rank = new AyFbFriendRank($facebook);
 $holyshit = $rank->getFriends();
-print_r($holyshit);
+foreach ($holyshit as $trick) {
+ 
+ 	$name = $trick['name'];
+ 	echo($name . '/');
+  /*
+  $id = idx($friend, 'id');	
+  echo($id . ' ');
+  print_r($friend['links']['data'][0]['name']);
+  echo('------------');*/
+  //$query = '/' . $id . 'links?limit=1';
+  //$link = idx($facebook->api($query), 'data', array());
+  
+  //$friend['shlink'] = $link;
+}
+
+//print_r($holyshit);
 
 
 
