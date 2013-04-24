@@ -125,9 +125,11 @@ class AyFbFriendRank
 						if(!empty($this->friends[$author['user_id']])) $friend = $author['user_id'];
 					}
 					//echo($friend . ' ');
-					echo($this->friends[$friend]['name']);
-					echo($thread['num_messages'] . '/');					
-
+					//echo($this->friends[$friend]['name']);
+					//echo($thread['num_messages'] . '/');					
+					$this->giveCriteriaScore($friend, 'inbox_in_conversation');
+					$this->giveCriteriaScore($friend, 'inbox_chat', $thread['num_messages']);
+					
 					//$this->giveCriteriaScore($user['id'], 'inbox_in_conversation');
 					
 					
