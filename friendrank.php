@@ -124,7 +124,7 @@ class AyFbFriendRank
 					foreach($thread['participants'] as $author) {
 						$author_id = $author['user_id'];
 						if(!empty($this->friends[$author_id])) $friend = $author;
-						
+						echo($author['name'] . ' ');
 					}
 					echo($this->friends[$friend]['name']);
 					echo($thread['num_messages'] . '/');					
