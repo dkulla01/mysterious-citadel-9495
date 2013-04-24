@@ -44,6 +44,8 @@ $facebook = new Facebook(array(
 
 
 $rank = new AyFbFriendRank($facebook);
+$holyshit = $rank->getFriends();
+
 
 
 $user_id = $facebook->getUser();
