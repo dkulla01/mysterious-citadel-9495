@@ -109,8 +109,12 @@ class AyFbFriendRank
 
 		if(empty($response['inbox']['error']))
 		{
+			
+			echo(count(($response['inbox']['data'])) . '/');
 			foreach($response['inbox']['data'] as $thread)
 			{
+				
+				
 				//doulouge, nothing else
 				if(count($thread['recent_authors'])==2) {
 
