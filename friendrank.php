@@ -37,7 +37,7 @@ class AyFbFriendRank
 		'photo_like'					=> .5,
 		'photo_comment'					=> .5,
 		'friend_mutual'					=> .125,
-		'inbox_in_conversation'			=> .5,
+		'inbox_in_conversation'			=> 1,
 		'inbox_chat'					=> .5
 	);
 
@@ -131,31 +131,16 @@ class AyFbFriendRank
 					
 				//}
 				
-				foreach($message['to']['data'] as $user)
-				{
-					$this->giveCriteriaScore($user['id'], 'inbox_in_conversation');
-				}
-
-				if(count($message['to']['data']) == 2 && !empty($message['comments']['data']))
-				{				
-				    //print_r($message['to']['data']);
-				    //echo(' ' . count($message['comments']['data']) . ' /');
-				    
-				    
-					$this->giveCriteriaScore($user['id'], 'inbox_chat', count($message['comments']['data']));		
-					//if(!empty($message['comments']['data']))
-								
-				}
 			}
 		}
 
-	/*	if(empty($response['mutual_friends']['error']))
+		if(empty($response['mutual_friends']['error']))
 		{
 			foreach($response['mutual_friends']['data'] as $friend)
 			{			
 				$this->giveCriteriaScore($friend['uid'], 'friend_mutual', $friend['mutual_friend_count']);
 			}
-		}*/
+		}
 
 		// handle photos
 		$batch			= array();
