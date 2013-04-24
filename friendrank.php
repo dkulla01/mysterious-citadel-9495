@@ -116,7 +116,7 @@ class AyFbFriendRank
 
 					//echo($thread['message_count'] . '/');
 					foreach($thread['recent_authors'] as $author) {
-						if(!empty($this->friends[$author])) $friend = $this->friends[$author];
+						if(!empty($this->friends[$author])) $friend = $author;
 						
 					}
 					echo($friend);
