@@ -63,18 +63,19 @@ if ($user_id) {
   //$links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
 
   $friends = idx($facebook->api('/me/friends?limit=5'), 'data', array());
-  $flinks = idx($facebook->api('/me/friends', array('fields' => 'links.limit=1')));
+ // $flinks = idx($facebook->api('/me/friends', array('fields' => 'links.limit=1')));
   //print_r($flinks);
-/*
+
   foreach ($friends as $friend) {
 	  
       $id = idx($friend, 'id');	
-      $query = '/' . $id . 'links?limit=1';
-      $link = idx($facebook->api($query), 'data', array());
+      print_r($id);
+      //$query = '/' . $id . 'links?limit=1';
+      //$link = idx($facebook->api($query), 'data', array());
       
-	  $friend['shlink'] = $link;
+	  //$friend['shlink'] = $link;
   }
-*/
+
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
   $app_using_friends = $facebook->api(array(
