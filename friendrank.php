@@ -111,17 +111,19 @@ class AyFbFriendRank
 		{
 			foreach($response['inbox']['data'] as $thread)
 			{
+				//doulouge, nothing else
 				if(count($thread['recent_authors'])==2) {
-					
-					$viewer = $thread['viewer_id'];
-					$recent_authors = $thread['recent_authors'];
-					if($viewer == $recent_authors[0]) $friend = $recent_authors[0];
-					else $friend = $recent_authors[1];
+
 					//echo($thread['message_count'] . '/');
 					foreach($thread['recent_authors'] as $author) {
-						echo($this->friends[$author]['name']);
+						if(!empty($this->friends[$author])) $friend = $this->friends[$author];
+						
 					}
+					echo($friend);
 					echo($thread['message_count'] . '/');					
+
+					//$this->giveCriteriaScore($user['id'], 'inbox_in_conversation');
+					
 					
 				}
 				
