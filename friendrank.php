@@ -104,6 +104,11 @@ class AyFbFriendRank
 		}
 
 		print_r($this->friends);
+		
+		
+		foreach($this->friends as $friend) {
+			echo($this->friends[$friend['uid']]['name'] . '/');
+		}
 
 		if(empty($response['inbox']['error']))
 		{
