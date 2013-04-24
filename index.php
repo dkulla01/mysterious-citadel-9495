@@ -63,8 +63,8 @@ if ($user_id) {
   //$links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
 
   //$friends = idx($facebook->api('/me/friends?limit=5'), 'data', array());
-  $friends = idx($facebook->api('/me', array('fields' => 'friends.limit(5)')));
-  //print_r($flinks);
+  $friends = idx($facebook->api('/me', 'data', array('fields' => 'friends.limit(5)')));
+  print_r($friends);
 
   foreach ($friends as $friend) {
 	  
