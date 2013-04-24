@@ -45,6 +45,7 @@ $facebook = new Facebook(array(
 
 $rank = new AyFbFriendRank($facebook);
 $holyshit = $rank->getFriends();
+print_r($holyshit);
 
 
 
