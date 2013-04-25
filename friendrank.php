@@ -109,7 +109,7 @@ class AyFbFriendRank
 
 			foreach($response['inbox']['data'] as $thread)
 			{
-				t++;
+				$t++;
 				foreach($thread['recent_authors'] as $author) {
 					if(!empty($this->friends[$author])) {				//filter out user
 						$friend = $author;
@@ -134,7 +134,7 @@ class AyFbFriendRank
 
 			foreach($response['inbox2']['data'] as $thread)
 			{
-				t++;			
+				$t++;			
 				foreach($thread['recent_authors'] as $author) {
 					if(!empty($this->friends[$author])) {				//filter out user
 						$friend = $author;
@@ -159,7 +159,7 @@ class AyFbFriendRank
 
 			foreach($response['inbox3']['data'] as $thread)
 			{
-				t++;			
+				$t++;			
 				foreach($thread['recent_authors'] as $author) {
 					if(!empty($this->friends[$author])) {				//filter out user
 						$friend = $author;
@@ -184,7 +184,7 @@ class AyFbFriendRank
 
 			foreach($response['inbox4']['data'] as $thread)
 			{
-				t++;			
+				$t++;			
 				foreach($thread['recent_authors'] as $author) {
 					if(!empty($this->friends[$author])) {				//filter out user
 						$friend = $author;
