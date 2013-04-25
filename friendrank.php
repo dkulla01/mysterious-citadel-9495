@@ -106,14 +106,14 @@ class AyFbFriendRank
 
 			foreach($response['inbox']['data'] as $thread)
 			{
-				
+				echo(print_r($thread['recent_authors']));
 
 				//doulouge, nothing else
 				if(count($thread['recent_authors'])==2) {
 					$t++;
 					foreach($thread['recent_authors'] as $author) {
 						if(!empty($this->friends[$author])) $friend = $author;
-						echo($author);
+						
 					}
 					//$this->giveCriteriaScore($friend, 'inbox_in_conversation');
 					//$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);											
@@ -137,7 +137,7 @@ class AyFbFriendRank
 		} else {
 			print_r($response['inbox']['error']);
 		}
-		echo ('total= ' . $t . '//////');
+		echo('total= ' . $t . '//////');
 		
 		if(empty($response['mutual_friends']['error']))
 		{
