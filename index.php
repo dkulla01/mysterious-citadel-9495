@@ -97,44 +97,7 @@ if ($user_id) {
       exit();
     }
   }
-
-  // This fetches some things that you like . 'limit=*" only returns * values.
-  // To see the format of the data you are retrieving, use the "Graph API
-  // Explorer" which is at https://developers.facebook.com/tools/explorer/
-
-  // This fetches 4 of your friends.
-  $links = idx($facebook->api('/me/links?limit=10'), 'data', array());
-  //$links = idx($facebook->api('/me?fields=links.limit(20)'), 'data', array());
-
-  //$friends = idx($facebook->api('/me/friends?limit=5'), 'data', array());
-  $result = $facebook->api('/me', array('fields' => 'friends.limit(5).fields(links.limit(1))'));
-  $friends = $result['friends']['data'];
-  //print_r($something);
-
-  foreach ($friends as $friend) {
-	  
-      $id = idx($friend, 'id');	
-     // echo($id . ' ');
-     // print_r($friend['links']['data'][0]['name']);
-     // echo('------------');
-      //$query = '/' . $id . 'links?limit=1';
-      //$link = idx($facebook->api($query), 'data', array());
-      
-	  //$friend['shlink'] = $link;
-  }
-
-  // Here is an example of a FQL call that fetches all of your friends that are
-  // using this app
-  $app_using_friends = $facebook->api(array(
-    'method' => 'fql.query',
-    'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
-  ));
 }
-
-// Fetch the basic info of the app that they are using
-$app_info = $facebook->api('/'. AppInfo::appID());
-
-$app_name = idx($app_info, 'name', '');
 
 ?>
 <!DOCTYPE html>
@@ -146,26 +109,17 @@ $app_name = idx($app_info, 'name', '');
     <title><?php echo he($app_name); ?></title>
     <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
+	<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />    
 
     <!--[if IEMobile]>
     <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
     <![endif]-->
 
-    <!-- These are Open Graph tags.  They add meta data to your  -->
-    <!-- site that facebook uses when your content is shared     -->
-    <!-- over facebook.  You should fill these tags in with      -->
-    <!-- your data.  To learn more about Open Graph, visit       -->
-    <!-- 'https://developers.facebook.com/docs/opengraph/'       -->
-    <meta property="og:title" content="<?php echo he($app_name); ?>" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="<?php echo AppInfo::getUrl(); ?>" />
-    <meta property="og:image" content="<?php echo AppInfo::getUrl('/logo.png'); ?>" />
-    <meta property="og:site_name" content="<?php echo he($app_name); ?>" />
-    <meta property="og:description" content="My first app" />
-    <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
-
     <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
-
+    <script src="/javascript/jquery.isotope.min.js"></script>
+    <script src="/javascript/site.js"></script>
     <!--[if IE]>
       <script type="text/javascript">
         var tags = ['header', 'section'];
@@ -212,14 +166,13 @@ $app_name = idx($app_info, 'name', '');
 
     <header class="clearfix">
       <?php if (isset($basic)) { ?>
-      <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
-
       <div>
         <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?></strong>.</h1>
         <p class="tagline">
           This is your app
           <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
         </p>
+      </div>
       <?php } else { ?>
       <div>
         <h1>Welcome! Log In to start. I promise that Facebook doesn't allow me to see any of your data.</h1>
@@ -227,59 +180,216 @@ $app_name = idx($app_info, 'name', '');
       </div>
       <?php } ?>
     </header>
-
-    <?php
-      if ($user_id) {
-    ?>
-
-    <!--<section id="samples" class="clearfix">
-      <h1>Recent Links</h1>
-
-      <div class="list">
-        <ol class="friends">
-          <?php
-            foreach ($links as $link) {
-              // Extract the pieces of info we need from the requests above
-              $url = idx($link, 'link');
-              $name = idx($link, 'name');
-          ?>
-          <li>
-            <a href="<?php echo he($url); ?>" target="_blank">
-              <?php //echo he($name); ?>
-            </a>
-          </li>
-          <?php
-            }
-          ?>
-        </ol>
-      </div>
-
-      <h1>Friends Links</h1>
-
-      <div class="list">
-        <ul class="friends">-->
-          <?php
-            foreach ($friends as $friend) {
-              // Extract the pieces of info we need from the requests above
-              //$url = idx($friend, 'shlink');
-              $name = idx($friend, 'name');
-          ?>
-          <!--<li>-->
-            <!--<a href="<?php //echo he($url); ?>" target="_blank">-->
-              <?php //echo he($name);// . ' ' . he($url); ?>
-           <!-- </a> -->
-          <!--</li>-->
-          <?php
-            }
-          ?>
-        <!--</ul>
-      </div>
-      
-    </section>-->
-
-    <?php
-      }
-    ?>
+    
+	<div class='content'>
+		<aside>
+			<h1 class='error'>No articles to display.</h1>			
+			<div class='radar'>
+				<div class='big circle' id='big'></div>  
+				<div class='med circle' id='med'></div> 
+				<div class='small circle' id='small'></div> 
+				<div class='dot'>YOU</div>
+				<div class='tooltip'>Hello</div>
+			</div>	
+			
+			<h2 class='select' id='all'>Show All</h2>
+			<h2 id='home'>Home Friends</h2>
+			<h2 id='school'>School Friends</h2>
+			<h2 id='top'>Top Stories</h2>
+			<h2 id='video'>Videos</h2>
+			<h2 id='image'>Images</h2>
+			<h2 id='article'>Articles</h2>		
+		</aside>
+		<section>
+			<h1 class='title'>All Links</h1>
+			  <article class="col1 med school article">
+			    <blockquote>
+			      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+			    </blockquote>
+			    <p>&mdash; Marcus Aurelius</p>
+			    <em>shared by: jay peterson</em>			    	
+			  </article>		
+		
+			<article class="col2 big home top video">
+			    <h2>Last Day Dream</h2>
+			    <p>
+			      <object width="460" height="265"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=4155700&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=ff4000&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=4155700&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=ff4000&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="460" height="265"></embed></object>
+			    </p>
+			
+			    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			    <em>shared by: pete rose</em>	
+			  </article>
+			
+			  <article class="col1 small home article">
+			    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> 
+			    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			    <p>Lorem ipsum dolor sit amet.</p>
+			    <em>shared by: peter jason</em>				
+			  </article>
+			
+			  <article class="col2 small school image top" style='height:400px'>
+			    <p>
+			      <a href="http://www.flickr.com/photos/george_eastman_house/3123693806/in/set-72157611386593623"><img src="http://farm4.static.flickr.com/3121/3123693806_4cb1ca16d9.jpg" alt="" /></a>
+			    </p>
+			    <em>shared by: david ross</em>		
+			  </article>
+			
+			  <article class="col1 big home image top">
+			    <p>
+			      <a href="http://www.flickr.com/photos/george_eastman_house/3123692308/in/set-72157611386593623">
+			        <img src="http://farm4.static.flickr.com/3282/3123692308_9e81bc4d14.jpg" alt="" />
+			      </a>
+			    </p>
+			    <p>[PARENTS MAGAZINE, GIRL WITH CAT]</p>
+			     <em>shared by: jay peterson</em>	
+			  </article>
+			
+			  <article class="col1 small school article">
+			    <blockquote>
+			      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+			    </blockquote>
+			
+			    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			  			     <em>shared by: marcia wallace</em>	
+			  </article>
+			
+			  <article class="col2 big home article top">
+			    <h2>Ut enim ad minim veniam</h2>
+			    <ul>
+			       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+			       <li>Aliquam tincidunt mauris eu risus.</li>
+			       <li>Vestibulum auctor dapibus neque.</li>
+			    </ul>
+			    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. <a href="#">Mauris placerat eleifend leo.</a> Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+			  			     <em>shared by: jay peterson</em>	
+			  </article>
+			
+			  <article class="col3 med school article">
+			    <h3>Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.</h3>      
+			
+			
+			    <h3>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. <a href="#">Mauris placerat eleifend leo.</a></h3>
+			  			     <em>shared by: david dodd</em>	
+			  </article>
+			
+			  <article class="col1 big home image top">
+			    <h3>feugiat vitae, ultricies eget</h3>
+			    <a href="http://www.flickr.com/photos/library_of_congress/2179137415/"><img src="http://farm3.static.flickr.com/2109/2179137415_0e63ebb36e_m.jpg" alt="" /></a>
+			  			     <em>shared by: rick rowe</em>	
+			  </article>
+			
+			  <article class="col2 small school article">
+			    <h2>A Tremendous Celebration</h2>
+			    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+			    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+			    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+			    <ol>
+			       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+			       <li>Aliquam tincidunt mauris eu risus.</li>
+			       <li>Vestibulum auctor dapibus neque.</li>
+			    </ol>
+			
+			  			     <em>shared by: pete rose</em>	
+			  </article>
+			
+			
+			  <article class="col2 big home video">
+			    <object width="460" height="265"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=6185327&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=dd4499&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=6185327&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=dd4499&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="460" height="265"></embed></object>
+			  			     <em>shared by: lucy rose</em>	
+			  </article>
+			
+			  <article class="col2 med school article top">
+			    <h2>And of Deliberate Consequences</h2>
+			
+			    <ol>
+			       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+			       <li>Aliquam tincidunt mauris eu risus.</li>
+			       <li>Vestibulum auctor dapibus neque.</li>
+			    </ol>
+			
+			    <h3>Aenean ultricies mi</h3>
+			
+			    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+			    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+			
+			    <h3>Vestibulum tortor quam</h3>
+			
+			    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+			
+			  			     <em>shared by: james watson</em>	
+			  </article>
+			
+			  <article class="col1 small school article">
+			    <blockquote>
+			      <p>Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. 
+			
+			      </p>
+			    </blockquote>
+			  			     <em>shared by: blake roberts</em>	
+			  </article>
+			
+			  <article class="col1 med home image top">
+			    <p>
+			      <a href="http://www.flickr.com/photos/library_of_congress/2179136893/" title="Women workers install fixtures and assemblies to a tail fuselage section of a B-17F bomber at the Douglas Aircraft Company, Long Beach, Calif. Better known as the &quot;Flying Fortress,&quot; the B-17F is a later model of the B-17 which distinguished itself in acti by The Library of Congress, on Flickr"><img src="http://farm3.static.flickr.com/2186/2179136893_a12b3ace56_m.jpg" alt="Women workers install fixtures and assemblies to a tail fuselage section of a B-17F bomber at the Douglas Aircraft Company, Long Beach, Calif. Better known as the &quot;Flying Fortress,&quot; the B-17F is a later model of the B-17 which distinguished itself in acti"></a>
+			    </p>
+			    <p>
+			
+			      Women workers install fixtures and assemblies to a tail fuselage section of a B-17F bomber at the Douglas Aircraft Company, Long Beach, Calif. Better known as the "Flying Fortress," the B-17F is a later model of the B-17 which distinguished itself in action in the South Pacific, over Germany and elsewhere. It is a long range, high altitude heavy bomber, with a crew of seven to nine men, and with armament sufficient to defend itself on daylight missions
+			    </p>
+			  			     <em>shared by: liz jameson</em>	
+			  </article>
+			
+			  <article class="col1 med school article top">
+			    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+			    <p><em>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</em> consequat. <strong>Duis aute irure dolor in reprehenderit</strong> in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			    </p>
+			  			     <em>shared by: danny roberts</em>	
+			  </article>
+			
+			  <article class="col1 small home image">
+			    <p>
+			      <a href="http://www.flickr.com/photos/library_of_congress/2178407555/"><img src="http://farm3.static.flickr.com/2008/2178407555_9a9bcfe31f_m.jpg" height="240" alt="" /></a>
+			    </p>
+			  			     <em>shared by: jay peterson</em>	
+			  </article>
+			
+			
+			  <article class="col3 big school video">
+			     <object width="700" height="394"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=7174318&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=dd4499&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=7174318&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=dd4499&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="700" height="394"></embed></object>
+			  			     <em>shared by: rick catz</em>	
+			  </article>
+			
+			  <article class="col1 med home article top">
+			    <blockquote>
+			      <p>Sing, O goddess, the anger of Achilles son of Peleus, that brought countless ills upon the Achaeans. Many a brave soul did it send hurrying down to Hades, and many a hero did it yield a prey to dogs and vultures, for so were the counsels of Jove fulfilled from the day on which the son of Atreus, king of men, and great Achilles, first fell out with one another.</p>
+			    </blockquote>
+			
+			    <cite><a href="http://classics.mit.edu/Homer/iliad.1.i.html">Homer &mdash; The Iliad</a></cite>
+			  			     <em>shared by: homer simpson</em>	
+			  </article>
+			
+			  <article class="col1 small school article">
+			    <h2>Aliens attack South Dakota</h2>
+			      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+			    <blockquote><p>Yes, it did happen.</p></blockquote>
+			
+			    <p><em>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</em> consequat. <strong>Duis aute irure dolor in reprehenderit</strong> in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			    </p>
+			  			     <em>shared by: marcia wallace</em>	
+			  </article>
+			
+			  <article class="col3 big home image article top">
+			     <p style="float: right; margin-left: 20px"><a href="http://www.flickr.com/photos/george_eastman_house/3122875223/in/set-72157611386593623/"><img src="http://farm4.static.flickr.com/3197/3122875223_917b1ccafc.jpg" alt="McCall Cover, Joan Caulfield" /></a></p>
+			    <h2>And then, there is this.</h2>
+			     <p class="caption"><a href="http://www.flickr.com/photos/george_eastman_house/3122875223/in/set-72157611386593623/"><em>McCall Cover, Joan Caulfield</em> by Nickolas Muray</a></p>
+			     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			  			     <em>shared by: betsy phish</em>	
+			  </article>										
+		</section>
+	</div>
     
   </body>
 </html>
