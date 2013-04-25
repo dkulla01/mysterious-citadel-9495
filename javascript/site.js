@@ -27,7 +27,7 @@
 			$container.isotope({
 				itemSelector : 'article',
 				masonry: {
-					columnWidth: 120
+					columnWidth: 50
 				}
 			});			
 		});
