@@ -38,7 +38,7 @@ class AyFbFriendRank
 		'photo_comment'					=> .5,
 		'friend_mutual'					=> .125,
 		'inbox_in_conversation'			=> 1,
-		'inbox_chat'					=> .01
+		'inbox_chat'					=> .05
 	);
 
 	private $fb;
