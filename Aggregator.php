@@ -28,7 +28,7 @@ class LinkAggregator {
 				//$i++;
 				if(!empty($link)) {				//some people return nothing
 				//	$links[$link['time']] = $link;
-				 	echo($i . ': ' . $friend['name'] . '- ' . $link['title'] . ' //// ');
+				 	echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $link['title'] . '</p>');
 					$i++;
 				}	
 			}		
