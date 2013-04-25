@@ -38,7 +38,7 @@ class AyFbFriendRank
 		'photo_comment'					=> .5,
 		'friend_mutual'					=> .125,
 		'inbox_in_conversation'			=> 1,
-		'inbox_chat'					=> .5
+		'inbox_chat'					=> .01
 	);
 
 	private $fb;
@@ -78,8 +78,7 @@ class AyFbFriendRank
 			'albums'			=> 'fql?q=SELECT aid FROM album WHERE owner=me()',
 			'inbox'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50',
 			'inbox2'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50 OFFSET 51',
-			'inbox3'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50 OFFSET 101',	
-			'inbox4'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50 OFFSET 151'					
+			'inbox3'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50 OFFSET 101'					
 			//'inbox'				=> 'fql?q=SELECT participants,num_messages FROM unified_thread WHERE folder = "inbox" AND is_group_conversation = 0 LIMIT 100'
 		));
 
@@ -177,31 +176,6 @@ class AyFbFriendRank
 			}
 		} else {
 			print_r($response['inbox3']['error']);
-		}
-
-		if(empty($response['inbox4']['error']))
-		{
-
-			foreach($response['inbox4']['data'] as $thread)
-			{
-				$t++;			
-				foreach($thread['recent_authors'] as $author) {
-					if(!empty($this->friends[$author])) {				//filter out user
-						$friend = $author;
-						
-						if(count($thread['recent_authors']) > 2) {
-							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.25);
-							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.125);							
-						}
-						else {
-							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
-							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);							
-						}
-					}
-				}
-			}
-		} else {
-			print_r($response['inbox4']['error']);
 		}
 	
 		echo('total= ' . $t . '//////');
