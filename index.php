@@ -50,12 +50,11 @@ if($_COOKIE['friends']=='') {
 	echo('stored!');
 	$rank = new AyFbFriendRank($facebook);
 	$rankedFriends = $rank->getFriends();	
-	setcookie('friends','hello!',time() + (86400 * 7));
+	setcookie('friends',urlencode(serialize($rankedFriends)),time() + (86400 * 7));
 } else {
 	echo('saved!');
-	print_r($_COOKIE);
-	$rankedFriends = $_COOKIE['friends'];
-	//unserialize(urldecode($_COOKIE['friends'])); 
+	//print_r($_COOKIE); 
+	$rankedFriends = unserialize(urldecode($_COOKIE['friends'])); 
 }
 
 //$close = $rank->getCloseFriends();
