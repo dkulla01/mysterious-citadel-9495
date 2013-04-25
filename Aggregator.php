@@ -26,9 +26,11 @@ class LinkAggregator {
 	//given a user id, return past weeks worth of links
 	public function getPastWeek($id) {
 		
+		echo($id);
+		
 		$links = $fb->api(array(
 			'method' => 'fql.query',
-			'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . 'AND now()-created_time < 604800'
+			'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
 		));
 		
 		print_r($links);
