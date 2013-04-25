@@ -232,6 +232,29 @@ class AyFbFriendRank
 		return $this->sortFriends();
 	}
 
+	//return friends 0-50
+	public function getCloseFriends() {
+		
+		$close = array();
+		$keys = array_keys($friends);
+		
+		for($i = 0; $i < 50; $i++) {
+			$close[$keys[$i]] = $friends[$keys[$i]];
+			echo($i . '. ' . $close[$keys[$i]]['name'] );
+		}
+		
+		
+	}
+	
+	//return friends 50-150
+	public function getMedFriends() {}
+	
+	
+	//return everyone else
+	public function getFarFriends() {
+		
+	}
+
 	public function sortFriends()
 	{
 		foreach($this->friends as &$friend)
