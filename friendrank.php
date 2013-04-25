@@ -236,7 +236,7 @@ class AyFbFriendRank
 	public function getCloseFriends() {
 		
 		$close = array();
-		$keys = array_keys($friends);
+		$keys = array_keys($this->friends);
 		print_r($keys);
 		for($i = 0; $i < 50; $i++) {
 			//echo()
