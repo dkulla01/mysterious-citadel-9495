@@ -41,7 +41,7 @@ class LinkAggregator {
 		foreach($newlinks as $link) {
 			echo('<p>' . $i . ': ' . $link['title'] . ' (' . date("Y-m-d\TH:i:s\Z",$link['created_time'])  . ')</p>');
 			$i++;
-		}
+		}*/
 		
 		
 		
