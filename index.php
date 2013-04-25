@@ -46,9 +46,8 @@ $facebook = new Facebook(array(
 
 $rankedFriends;
 
+if(extension_loaded("mysql")) echo('mysql!');
 
-$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-print_r($url);
 /*
 if($_COOKIE['friends']=='') {
 	echo('stored!');
@@ -61,14 +60,15 @@ if($_COOKIE['friends']=='') {
 	//print_r($_COOKIE); 
 	//$rankedFriends = unserialize(urldecode($_COOKIE['friends'])); 
 }*/
-echo('hmm');
+
 //$close = $rank->getCloseFriends();
+/*
 foreach ($rankedFriends as $trick) {
  
  	$name = $trick['name'];
  	$score = $trick['score'];
  	$inbox_score = $trick['weight']['inbox_chat'];
- 	//echo($name . '(' . $score . ') / ');
+ 	//echo($name . '(' . $score . ') / ');*/
   /*
   $id = idx($friend, 'id');	
   echo($id . ' ');
@@ -78,14 +78,14 @@ foreach ($rankedFriends as $trick) {
   //$link = idx($facebook->api($query), 'data', array());
   
   //$friend['shlink'] = $link;
-}
+//}
 
 
-$agg = new LinkAggregator($facebook);
+//$agg = new LinkAggregator($facebook);
 
 //print_r($close);
 
-$agg->getLinks($close);
+//$agg->getLinks($close);
 
 //print_r($holyshit);
 
