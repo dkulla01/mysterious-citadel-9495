@@ -37,32 +37,18 @@ class LinkAggregator {
 		));
 		
 		//if(!empty($response['error'])) print_r($response['error']);
-		/*
-		if(empty($response['inbox3']['error']))
+		
+		if(empty($response['error']))
 		{
 
-			foreach($response['inbox3']['data'] as $thread)
+			foreach($response['data'] as $link)
 			{
-				$t++;			
-				foreach($thread['recent_authors'] as $author) {
-					if(!empty($this->friends[$author])) {				//filter out user
-						$friend = $author;
-						
-						if(count($thread['recent_authors']) > 2) {
-							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.25);
-							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.125);							
-						}
-						else {
-							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
-							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);							
-						}
-					}
-				}
+				echo($name . ': ' . $link['title'] . ' / ');
 			}
 		} else {
-			print_r($response['inbox3']['error']);
-		}	*/	
-		if(empty($response)) { echo($name . '/'); }
+			print_r($response['error']);
+		}		
+		//if(empty($response)) { echo($name . '/'); }
 		//print_r($response);
 		//echo('//////////');
 	}
