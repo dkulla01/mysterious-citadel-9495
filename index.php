@@ -1,11 +1,8 @@
 <?php
 
 /**
- * This sample app is provided to kickstart your experience using Facebook's
- * resources for developers.  This sample app provides examples of several
- * key concepts, including authentication, the Graph API, and FQL (Facebook
- * Query Language). Please visit the docs at 'developers.facebook.com/docs'
- * to learn more about the resources available to you
+ * newsbook v0.5
+ * Dan Kass, April 2013
  */
 
 // Provides access to app specific values such as your app id and app secret.
@@ -167,10 +164,7 @@ if ($user_id) {
     <header class="clearfix">
       <?php if (isset($basic)) { ?>
       <div>
-        <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?></strong>.</h1>
-        <p class="tagline">
-          This is your app
-        </p>
+        <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?>!</strong>.</h1>
       </div>
       <?php } else { ?>
       <div>
