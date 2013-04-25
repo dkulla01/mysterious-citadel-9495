@@ -34,8 +34,9 @@ class LinkAggregator {
 			}		
 			
 		}
+		echo('done');
 		
-		print_r($links);
+		//print_r($links);
 		/*
 		for($i = 0; $i < 40; $i++){
 			
