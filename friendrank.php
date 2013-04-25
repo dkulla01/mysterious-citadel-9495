@@ -76,7 +76,10 @@ class AyFbFriendRank
 			'mutual_friends'	=> 'fql?q=SELECT uid, mutual_friend_count FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())',
 			'feed'				=> 'fql?q=SELECT actor_id, target_id, likes, comments FROM stream WHERE source_id=me() LIMIT 500',
 			'albums'			=> 'fql?q=SELECT aid FROM album WHERE owner=me()',
-			'inbox'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0'
+			'inbox'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50',
+			'inbox2'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50 OFFSET 51',
+			'inbox3'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50 OFFSET 101',	
+			'inbox4'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0 LIMIT 50 OFFSET 151'					
 			//'inbox'				=> 'fql?q=SELECT participants,num_messages FROM unified_thread WHERE folder = "inbox" AND is_group_conversation = 0 LIMIT 100'
 		));
 
@@ -106,11 +109,6 @@ class AyFbFriendRank
 
 			foreach($response['inbox']['data'] as $thread)
 			{
-				
-				//print_r($thread);
-				//doulouge, nothing else
-				//if(count($thread['recent_authors'])==2) {
-				//	$t++;
 				foreach($thread['recent_authors'] as $author) {
 					if(!empty($this->friends[$author])) {				//filter out user
 						$friend = $author;
@@ -123,32 +121,85 @@ class AyFbFriendRank
 							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
 							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);							
 						}
-
-						//echo($this->friends[$friend]['name'] . ' ' . $thread['message_count'] . ' / ');
 					}
 				}
-					//$this->giveCriteriaScore($friend, 'inbox_in_conversation');
-					//$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);											
-				//}
-					//echo($thread['message_count'] . '/');
-				//	foreach($thread['participants'] as $author) {
-				//		if(!empty($this->friends[$author['user_id']])) $friend = $author['user_id'];
-				//	}
-					//echo($friend . ' ');
-					//echo($this->friends[$friend]['name']);
-					//echo($thread['num_messages'] . '/');					
-				//	$this->giveCriteriaScore($friend, 'inbox_in_conversation');
-				//	$this->giveCriteriaScore($friend, 'inbox_chat', $thread['num_messages']);
-					
-					//$this->giveCriteriaScore($user['id'], 'inbox_in_conversation');
-					
-					
-				//}
-				
 			}
 		} else {
 			print_r($response['inbox']['error']);
 		}
+		
+		if(empty($response['inbox2']['error']))
+		{
+
+			foreach($response['inbox2']['data'] as $thread)
+			{
+				foreach($thread['recent_authors'] as $author) {
+					if(!empty($this->friends[$author])) {				//filter out user
+						$friend = $author;
+						
+						if(count($thread['recent_authors']) > 2) {
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.5);
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.25);							
+						}
+						else {
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);							
+						}
+					}
+				}
+			}
+		} else {
+			print_r($response['inbox2']['error']);
+		}
+
+		if(empty($response['inbox3']['error']))
+		{
+
+			foreach($response['inbox3']['data'] as $thread)
+			{
+				foreach($thread['recent_authors'] as $author) {
+					if(!empty($this->friends[$author])) {				//filter out user
+						$friend = $author;
+						
+						if(count($thread['recent_authors']) > 2) {
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.5);
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.25);							
+						}
+						else {
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);							
+						}
+					}
+				}
+			}
+		} else {
+			print_r($response['inbox3']['error']);
+		}
+
+		if(empty($response['inbox4']['error']))
+		{
+
+			foreach($response['inbox4']['data'] as $thread)
+			{
+				foreach($thread['recent_authors'] as $author) {
+					if(!empty($this->friends[$author])) {				//filter out user
+						$friend = $author;
+						
+						if(count($thread['recent_authors']) > 2) {
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.5);
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.25);							
+						}
+						else {
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);							
+						}
+					}
+				}
+			}
+		} else {
+			print_r($response['inbox4']['error']);
+		}
+	
 		//echo('total= ' . $t . '//////');
 		
 		if(empty($response['mutual_friends']['error']))
