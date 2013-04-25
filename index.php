@@ -49,7 +49,7 @@ $rankedFriends;
 
 $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 print_r($url);
-
+/*
 if($_COOKIE['friends']=='') {
 	echo('stored!');
 	$rank = new AyFbFriendRank($facebook);
@@ -60,8 +60,8 @@ if($_COOKIE['friends']=='') {
 	echo('saved!');
 	//print_r($_COOKIE); 
 	//$rankedFriends = unserialize(urldecode($_COOKIE['friends'])); 
-}
-
+}*/
+echo('hmm');
 //$close = $rank->getCloseFriends();
 foreach ($rankedFriends as $trick) {
  
