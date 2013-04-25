@@ -40,7 +40,7 @@ header h2:hover {
 .content {
 	width: 90%;
 	margin: 0 auto;
-	padding-top: 75px;
+	padding-top: 25px;
 }
 
 aside {
@@ -77,6 +77,18 @@ article {
 article:hover {
 	border: 3px solid #ddd !important;
 	cursor: pointer;
+}
+
+
+article h4 {
+	text-transform: uppercase;
+}
+article h5 {
+	font-style: italic;
+}
+article h2 {
+	font-size: 30px;
+	font-weight: bold;
 }
 
 article p {

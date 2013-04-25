@@ -196,11 +196,10 @@ if ($user_id) {
 		<section>
 			<h1 class='title'>All Links</h1>
 			  <article class="col1 med school article">
-			    <blockquote>
-			      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-			    </blockquote>
-			    <p>&mdash; Marcus Aurelius</p>
-			    <em>shared by: jay peterson</em>			    	
+			  	<h4>Jay Peterson</h4>
+			  	<h5>4/24/2013 4:59PM</h5>
+			  	<h2>This is the title of the shared article that etc Something</h2>
+			  	<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>			    	
 			  </article>		
 		
 			<article class="col2 big home top video">
