@@ -45,8 +45,18 @@ $facebook = new Facebook(array(
 ));
 
 $rank = new AyFbFriendRank($facebook);
-$rankedFriends = $rank->getFriends();
 $close = $rank->getCloseFriends();
+
+$file = 'ranked.txt';
+if(file_exists($file)) {
+	$rankedFriends = file_get_contents($file);
+	print_r($rankedFriends);
+} else {
+	$rankedFriends = $rank->getFriends();
+	file_put_contents($file,$rankedFriends);
+}
+//$ranked_data = serialize($rankedFriends);
+
 
 foreach ($rankedFriends as $trick) {
  
@@ -70,7 +80,7 @@ $agg = new LinkAggregator($facebook);
 
 //print_r($close);
 
-$agg->getLinks($close);
+//$agg->getLinks($close);
 
 //print_r($holyshit);
 
