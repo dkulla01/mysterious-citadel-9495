@@ -12,12 +12,23 @@ class LinkAggregator {
 	//given a sorted list of friends, return the top 30 links, sorted by date and popularity
 	public function getLinks($friends) {
 		
-		//for each friend, get past weeks worth of links
-		foreach($friends as $friend) {
-			//echo($friend['name'] . '(' . $friend['uid'] . ') LINKS:');
+		$num = count($friends);
+		
+		for($i = 0; $i < 45; $i++){
+			
+			$s = rand(0, $num);
+			$friend = $friends[$s];
 			$this->getPastWeek($friend['uid'], $friend['name']);
-			//echo('///////////////////////////');
 		}
+		
+		//for each friend, get past weeks worth of links
+		//foreach($friends as $friend) {
+			//echo($friend['name'] . '(' . $friend['uid'] . ') LINKS:');
+		//	$this->getPastWeek($friend['uid'], $friend['name']);
+			//echo('///////////////////////////');
+		//}
+		
+		
 		
 		//for all generated links, rank by date/popularity
 		
