@@ -242,19 +242,35 @@ class AyFbFriendRank
 		for($i = 0; $i < 50; $i++) {
 			//echo()
 			$close[$i] = $this->friends[$i];
-			echo($i+1 . '. ' . $close[$i]['name'] );
+			//echo($i+1 . '. ' . $close[$i]['name'] );
 		}
 		
-		
+		return $close;
 	}
 	
 	//return friends 50-150
-	public function getMedFriends() {}
+	public function getMedFriends() {
+		
+		$med = array();
+		for($i = 50; $i < 150; $i++) {
+			$med[$i] = $this->friends[$i];
+		}
+		
+		return $med;		
+	}
 	
 	
 	//return everyone else
 	public function getFarFriends() {
+	
+		$far = array();
+		for($i = 150; $i < count($this->friends); $i++) {
+			//echo()
+			$far[$i] = $this->friends[$i];
+			echo($i+1 . '. ' . $far[$i]['name'] );
+		}
 		
+		//return $far;		
 	}
 
 	public function sortFriends()
