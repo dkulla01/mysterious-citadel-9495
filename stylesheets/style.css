@@ -38,7 +38,7 @@ header h2:hover {
 }
 
 .content {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 	padding-top: 75px;
 }
@@ -90,9 +90,9 @@ article em {
 	font-weight: bold;
 }
 
-.col1 { width: 220px; }
-.col2 { width: 460px; } 
-.col3 { width: 700px; }
+.col1 { width: 100px; }
+.col2 { width: 100px; } 
+.col3 { width: 100px; }
 
 .col1 img,
 .col2 img,

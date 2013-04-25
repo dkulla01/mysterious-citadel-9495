@@ -25,7 +25,10 @@
 		
 		$container.imagesLoaded( function() {
 			$container.isotope({
-				itemSelector : 'article'
+				itemSelector : 'article',
+				masonry: {
+					columnWidth: 120
+				}
 			});			
 		});
 
