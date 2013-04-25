@@ -28,7 +28,7 @@ class LinkAggregator {
 				//$i++;
 				if(!empty($link)) {				//some people return nothing, randomly
 					$links[$friend['uid']] = $link;
-				 	echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $link['title'] . '</p>');
+				 	echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
 					$i++;
 				}	
 			}		
