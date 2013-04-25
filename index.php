@@ -47,13 +47,13 @@ $facebook = new Facebook(array(
 
 $rank = new AyFbFriendRank($facebook);
 $holyshit = $rank->getFriends();
-//$rank->getFarFriends();
+$close->getCloseFriends();
 foreach ($holyshit as $trick) {
  
  	$name = $trick['name'];
  	$score = $trick['score'];
  	$inbox_score = $trick['weight']['inbox_chat'];
- 	echo(print_r($trick) . ' / ');
+ 	//echo(print_r($trick) . ' / ');
   /*
   $id = idx($friend, 'id');	
   echo($id . ' ');
@@ -67,6 +67,8 @@ foreach ($holyshit as $trick) {
 
 
 $agg = new LinkAggregator($facebook);
+
+$agg->getLinks($close);
 
 //print_r($holyshit);
 
