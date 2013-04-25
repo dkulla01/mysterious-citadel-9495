@@ -32,7 +32,7 @@ class LinkAggregator {
 		
 		$response = $this->fb->api(array(
 			'method' => 'fql.query',
-			'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id;
+			'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id
 			//'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
 		));
 		
