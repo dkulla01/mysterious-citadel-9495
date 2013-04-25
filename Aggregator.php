@@ -19,8 +19,8 @@ class LinkAggregator {
 			$s = rand(0, $num);
 			echo($s);
 			$friend = $friends[$s];
-			print_r($friend);
-			//$this->getPastWeek($friend['uid'], $friend['name']);
+			//print_r($friend);
+			$this->getPastWeek($friend['uid'], $friend['name']);
 		}
 		
 		//for each friend, get past weeks worth of links
