@@ -40,15 +40,15 @@ class LinkAggregator {
 		
 		if(empty($response['error']))
 		{
-			echo($name);
+			//echo($name);
 			print_r($response);
-			echo(' / ');
-			foreach($response['data'] as $link)
-			{
+			//echo(' / ');
+			//foreach($response['data'] as $link)
+			//{
 				//print_r($link);
 				
 				//echo($name . ': ' . $link['title'] . ' / ');
-			}
+			//}
 		} else {
 			print_r($response['error']);
 		}		
