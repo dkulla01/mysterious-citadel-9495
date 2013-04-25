@@ -17,7 +17,7 @@ class LinkAggregator {
 		$links = array();
 		$i = 0;
 		
-		while($i < 15) {		
+		while($i < 10) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
@@ -111,6 +111,11 @@ class LinkAggregator {
 		//if(empty($response)) { echo($name . '/'); }
 		//print_r($response);
 		//echo('//////////');
+	}
+	
+	//return true if the string contains a link
+	private function containsLink($s) {
+		
 	}
 	
 	//sort links from earliest > latest
