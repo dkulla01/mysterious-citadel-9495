@@ -14,8 +14,8 @@ class LinkAggregator {
 		
 		//for each friend, get past weeks worth of links
 		foreach($friends as $friend) {
-			echo($friend['name']);
-			//getPastWeek($friend['uid']);
+			//echo($friend['name']);
+			getPastWeek($friend['uid']);
 		}
 		
 		//for all generated links, rank by date/popularity
@@ -27,7 +27,7 @@ class LinkAggregator {
 	//given a user id, return past weeks worth of links
 	public function getPastWeek($id) {
 		
-		echo($id);
+		//echo($id);
 		
 		$links = $fb->api(array(
 			'method' => 'fql.query',
@@ -35,6 +35,7 @@ class LinkAggregator {
 		));
 		
 		print_r($links);
+		echo('//////////');
 	}
 	
 	
