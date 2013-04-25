@@ -17,7 +17,7 @@ class LinkAggregator {
 		$links = array();
 		$i = 0;
 		
-		while($i < 25) {		
+		while($i < 50) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
@@ -28,7 +28,7 @@ class LinkAggregator {
 				//$i++;
 				if(!empty($link)) {				//some people return nothing
 				//	$links[$link['time']] = $link;
-				 	echo($friend['name'] . ': ' . $link['title'] . ' / ');
+				 	echo($i . ': ' . $friend['name'] . '- ' . $link['title'] . ' //// ');
 					$i++;
 				}	
 			}		
