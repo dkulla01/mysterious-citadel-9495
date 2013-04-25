@@ -22,15 +22,15 @@ class LinkAggregator {
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
 				$friend = $friends[$s];
-				echo($friend['name']);
 				//$i++;
 				//print_r($friend);
 				$link = $this->getFriendLinks($friend['uid']);
-				$i++;
-				//if(!empty($link)) {				//some people return nothing
+				//$i++;
+				if(!empty($link)) {				//some people return nothing
 				//	$links[$link['time']] = $link;
-				//	$i++;
-				//}	
+				 	echo($friend['name'] . ': ' . $link['title'] . ' / ');
+					$i++;
+				}	
 			}		
 			
 		}
@@ -86,7 +86,8 @@ class LinkAggregator {
 			//print_r($response);
 			
 			$link = $response[0];
-			echo(': ' . $link['title'] . ' / ');
+			//echo(': ' . $link['title'] . ' / ');
+			return $link;
 			//echo(' / ');
 			//foreach($response['data'] as $link)
 			//{
