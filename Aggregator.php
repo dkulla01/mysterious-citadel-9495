@@ -27,13 +27,15 @@ class LinkAggregator {
 				$link = $this->getFriendLinks($friend['uid']);
 				//$i++;
 				if(!empty($link)) {				//some people return nothing
-				//	$links[$link['time']] = $link;
-				 	echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $link['title'] . '</p>');
+					$links[$friend['uid']] = $link;
+				 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $link['title'] . '</p>');
 					$i++;
 				}	
 			}		
 			
 		}
+		
+		print_r($links);
 		/*
 		for($i = 0; $i < 40; $i++){
 			
@@ -68,7 +70,7 @@ class LinkAggregator {
 	}
 	
 	//given a user id, return 1 link
-	public function getFriendLinks($id) {
+	private function getFriendLinks($id) {
 		
 
 		
@@ -103,6 +105,20 @@ class LinkAggregator {
 		//echo('//////////');
 	}
 	
+	//sort links from earliest > latest
+	private function sortByDate($links) {
+
+		usort($links, function($a, $b){			
+			if($a['created_time'] == $b['created_time'])
+			{
+				return;
+			}
+
+			return $a['created_time'] > $b['created_time'] ? -1 : 1;
+		});
+
+		return $links;
+	}
 	
 
 }
