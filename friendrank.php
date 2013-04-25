@@ -115,8 +115,8 @@ class AyFbFriendRank
 						$friend = $author;
 						
 						if(count($thread['recent_authors']) > 2) {
-							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.5);
-							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.25);							
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.25);
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.125);							
 						}
 						else {
 							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
@@ -140,8 +140,8 @@ class AyFbFriendRank
 						$friend = $author;
 						
 						if(count($thread['recent_authors']) > 2) {
-							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.5);
-							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.25);							
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.25);
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.125);							
 						}
 						else {
 							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
@@ -165,8 +165,8 @@ class AyFbFriendRank
 						$friend = $author;
 						
 						if(count($thread['recent_authors']) > 2) {
-							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.5);
-							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.25);							
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.25);
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.125);							
 						}
 						else {
 							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
@@ -190,8 +190,8 @@ class AyFbFriendRank
 						$friend = $author;
 						
 						if(count($thread['recent_authors']) > 2) {
-							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.5);
-							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.25);							
+							$this->giveCriteriaScore($friend, 'inbox_in_conversation', 0.25);
+							$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count'] * 0.125);							
 						}
 						else {
 							$this->giveCriteriaScore($friend, 'inbox_in_conversation');
