@@ -52,7 +52,7 @@ aside {
 }
 
 section {
-	width: 78%;
+	width: 75%;
 	margin: 0 auto;
 	float: right;
 	padding-top: 50px;
@@ -90,9 +90,9 @@ article em {
 	font-weight: bold;
 }
 
-.col1 { width: 100px; }
-.col2 { width: 100px; } 
-.col3 { width: 100px; }
+.col1 { width: 200px; }
+.col2 { width: 200px; } 
+.col3 { width: 200px; }
 
 .col1 img,
 .col2 img,
