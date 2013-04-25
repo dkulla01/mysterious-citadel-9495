@@ -47,7 +47,7 @@ $facebook = new Facebook(array(
 
 $rank = new AyFbFriendRank($facebook);
 $holyshit = $rank->getFriends();
-$close->getCloseFriends();
+$close = $rank->getCloseFriends();
 foreach ($holyshit as $trick) {
  
  	$name = $trick['name'];
