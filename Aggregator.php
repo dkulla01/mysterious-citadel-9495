@@ -17,7 +17,7 @@ class LinkAggregator {
 		$links = array();
 		$i = 0;
 		
-		while($i < 20) {		
+		while($i < 30) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
@@ -124,7 +124,40 @@ class LinkAggregator {
 		return $links;
 	}
 	
+	/**
+	 * A helper method to make Graph requests in batches.
+	 * The result array preservers original keys.
+	 */
+	private function batch($requests)
+	{
+		foreach(array_chunk($requests, 50, TRUE) as $chunk)
+		{
+			$batch		= array();
 
+			foreach($chunk as $request)
+			{
+				if(is_array($request))
+				{
+					$batch[]	= array('method' => 'GET') + $request;
+				}
+				else
+				{
+					$batch[]	= array('method' => 'GET', 'relative_url' => $request);
+				}
+			}
+
+			$original_keys	= array_keys($chunk);
+
+			$response		= $this->fb->api(NULL, 'POST', array('batch' => $batch));
+
+			foreach($response as $i => $data)
+			{				
+				$result[$original_keys[$i]]	= json_decode($data['body'], TRUE);
+			}
+		}
+
+		return $result;
+	}
 }
 
 ?>
