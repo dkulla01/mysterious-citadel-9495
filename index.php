@@ -51,7 +51,7 @@ foreach ($holyshit as $trick) {
  	$name = $trick['name'];
  	$score = $trick['score'];
  	$inbox_score = $trick['weight']['inbox_chat'];
- 	echo($name . '('. $inbox_score . ') / ');
+ 	echo($name . '('. $score . ') / ');
   /*
   $id = idx($friend, 'id');	
   echo($id . ' ');
