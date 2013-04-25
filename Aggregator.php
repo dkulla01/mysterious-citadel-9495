@@ -26,7 +26,7 @@ class LinkAggregator {
 				//print_r($friend);
 				$link = $this->getFriendLinks($friend['uid']);
 				//$i++;
-				if(!empty($link)) {				//some people return nothing, randomly
+				if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
 					$links[$friend['uid']] = $link;
 				 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
 					$i++;
@@ -34,13 +34,16 @@ class LinkAggregator {
 			}		
 			
 		}
+
+		$newlinks = $this->sortByDate($links);
 		
 		$i = 0;
-		foreach($links as $link) {
-			if($this->containsLink($link['title'])) echo('trick');
-			echo('<p>' . $i . ': ' . $link['title'] . '</p>');
+		foreach($newlinks as $link) {
+			echo('<p>' . $i . ': ' . $link['title'] . ' (' . date("Y-m-d\TH:i:s\Z",$link['created_time'])  . ')</p>');
 			$i++;
 		}
+		
+		
 		
 		//print_r($links);
 		/*
