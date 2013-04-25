@@ -22,11 +22,11 @@ class LinkAggregator {
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
 				$friend = $friends[$s];
-				echo($friend['name'] . ' / ');
-				$i++;
+				echo($friend['name']);
+				//$i++;
 				//print_r($friend);
-				//$link = $this->getFriendLinks($friend['uid']);
-				
+				$link = $this->getFriendLinks($friend['uid']);
+				$i++;
 				//if(!empty($link)) {				//some people return nothing
 				//	$links[$link['time']] = $link;
 				//	$i++;
@@ -68,7 +68,7 @@ class LinkAggregator {
 	}
 	
 	//given a user id, return 1 link
-	public function getFriendLinks($id, $name) {
+	public function getFriendLinks($id) {
 		
 
 		
@@ -86,7 +86,7 @@ class LinkAggregator {
 			//print_r($response);
 			
 			$link = $response[0];
-			echo($name . ': ' . $link['title'] . ' / ');
+			echo(': ' . $link['title'] . ' / ');
 			//echo(' / ');
 			//foreach($response['data'] as $link)
 			//{
