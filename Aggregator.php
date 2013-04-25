@@ -34,9 +34,9 @@ class LinkAggregator {
 			'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
 		));
 		
-		if(!empty($response['error'])) print_r($response['error']);
+		//if(!empty($response['error'])) print_r($response['error']);
 		
-		//print_r($links);
+		print_r($links);
 		//echo('//////////');
 	}
 	
