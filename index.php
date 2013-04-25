@@ -45,7 +45,6 @@ $facebook = new Facebook(array(
 ));
 
 $rank = new AyFbFriendRank($facebook);
-$close = $rank->getCloseFriends();
 
 $file = 'ranked.txt';
 if(filesize($file) > 0) {
@@ -55,7 +54,7 @@ if(filesize($file) > 0) {
 	file_put_contents($file,serialize($rankedFriends));
 }
 //$ranked_data = serialize($rankedFriends);
-
+$close = $rank->getCloseFriends($rankedFriends);
 
 foreach ($rankedFriends as $trick) {
  

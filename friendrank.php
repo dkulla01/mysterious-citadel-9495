@@ -231,15 +231,14 @@ class AyFbFriendRank
 	}
 
 	//return friends 0-50
-	public function getCloseFriends() {
+	public function getCloseFriends($rankedFriends) {
 		
 		$close = array();
-		$keys = array_keys($this->friends);
 		//print_r($this->friends);
 		//print_r($keys);
 		for($i = 0; $i < 50; $i++) {
 			//echo()
-			$close[$i] = $this->friends[$i];
+			$close[$i] = $rankedFriends[$i];
 			//echo($i+1 . '. ' . $close[$i]['name'] );
 		}
 		
