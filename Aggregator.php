@@ -14,7 +14,7 @@ class LinkAggregator {
 		
 		$num = count($friends);
 		
-		for($i = 0; $i < 1; $i++){
+		for($i = 0; $i < 5; $i++){
 			
 			$s = rand(0, $num);
 			//echo($s);
