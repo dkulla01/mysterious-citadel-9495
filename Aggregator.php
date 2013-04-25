@@ -37,7 +37,7 @@ class LinkAggregator {
 		
 		$i = 0;
 		foreach($links as $link) {
-			if(containsLink($link['title'])) echo('trick');
+			//if(containsLink($link['title'])) echo('trick');
 			echo('<p>' . $i . ': ' . $link['title'] . '</p>');
 			$i++;
 		}
@@ -123,7 +123,7 @@ class LinkAggregator {
 	//sort links from earliest > latest
 	private function sortByDate($links) {
 
-		usort($links, function($a, $b){			
+		uasort($links, function($a, $b){			
 			if($a['created_time'] == $b['created_time'])
 			{
 				return;
