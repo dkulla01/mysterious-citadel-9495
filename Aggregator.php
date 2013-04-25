@@ -17,7 +17,7 @@ class LinkAggregator {
 		$links = array();
 		$i = 0;
 		
-		while($i < 40) {		
+		while($i < 30) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
@@ -34,7 +34,12 @@ class LinkAggregator {
 			}		
 			
 		}
-		echo('done');
+		
+		$i = 0;
+		foreach($links as $link) {
+			echo('<p>' . $i . ': ' . $link['title'] . '</p>');
+			$i++;
+		}
 		
 		//print_r($links);
 		/*
