@@ -161,10 +161,10 @@ if ($user_id) {
       }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <header class="clearfix">
+    <!--<header class="clearfix">
       <?php if (isset($basic)) { ?>
       <div>
-        <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?>!</strong>.</h1>
+        <h1>Hello, <strong><?php //echo he(idx($basic, 'name')); ?>!</strong>.</h1>
       </div>
       <?php } else { ?>
       <div>
@@ -172,7 +172,7 @@ if ($user_id) {
         <div class="fb-login-button" data-scope="read_mailbox,read_stream,user_photos,friends_photos"></div>
       </div>
       <?php } ?>
-    </header>
+    </header>-->
     
 	<div class='content'>
 		<aside>
