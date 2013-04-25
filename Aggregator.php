@@ -12,16 +12,44 @@ class LinkAggregator {
 	//given a sorted list of friends, return the top 30 links, sorted by date and popularity
 	public function getLinks($friends) {
 		
-		$num = count($friends);
+		$max_num = count($friends);
+		$nums = array_fill(0,$num,false);
+		$links = array();
+		$i = 0;
 		
+		while($i < 25) {		
+			$s = rand(0, $max_num);					//random person from list
+			if($nums[$s]) {						//dont repeat person
+				$nums[$s] = true;
+				$friend = $friends[$s];
+				echo($friend['name'] . ' / ');
+				//print_r($friend);
+				//$link = $this->getFriendLinks($friend['uid']);
+				
+				//if(!empty($link)) {				//some people return nothing
+				//	$links[$link['time']] = $link;
+				//	$i++;
+				//}	
+			}		
+			
+		}
+		/*
 		for($i = 0; $i < 40; $i++){
 			
 			$s = rand(0, $num);
-			//echo($s);
-			$friend = $friends[$s];
-			//print_r($friend);
-			$this->getPastWeek($friend['uid'], $friend['name']);
-		}
+			if($nums[$s]) {
+				$nums[$s] = true;
+				//echo($s);
+				$friend = $friends[$s];
+				//print_r($friend);
+				$link = $this->getFriendLinks($friend['uid']);
+				
+				if(!empty($link)) {
+					
+				}
+				
+			} else $i--;
+		}*/
 		
 		//for each friend, get past weeks worth of links
 		//foreach($friends as $friend) {
@@ -38,8 +66,8 @@ class LinkAggregator {
 		
 	}
 	
-	//given a user id, return past weeks worth of links
-	public function getPastWeek($id, $name) {
+	//given a user id, return 1 link
+	public function getFriendLinks($id, $name) {
 		
 
 		
