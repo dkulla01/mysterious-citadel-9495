@@ -170,7 +170,6 @@ if ($user_id) {
         <h1>Hello, <strong><?php echo he(idx($basic, 'name')); ?></strong>.</h1>
         <p class="tagline">
           This is your app
-          <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
         </p>
       </div>
       <?php } else { ?>
