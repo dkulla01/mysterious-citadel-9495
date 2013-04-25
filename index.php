@@ -46,6 +46,10 @@ $facebook = new Facebook(array(
 
 $rankedFriends;
 
+
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+print_r($url);
+
 if($_COOKIE['friends']=='') {
 	echo('stored!');
 	$rank = new AyFbFriendRank($facebook);
