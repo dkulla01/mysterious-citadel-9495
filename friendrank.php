@@ -76,7 +76,7 @@ class AyFbFriendRank
 			'mutual_friends'	=> 'fql?q=SELECT uid, mutual_friend_count FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())',
 			'feed'				=> 'fql?q=SELECT actor_id, target_id, likes, comments FROM stream WHERE source_id=me() LIMIT 500',
 			'albums'			=> 'fql?q=SELECT aid FROM album WHERE owner=me()',
-			//'inbox'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0'
+			'inbox'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0'
 			//'inbox'				=> 'fql?q=SELECT participants,num_messages FROM unified_thread WHERE folder = "inbox" AND is_group_conversation = 0 LIMIT 100'
 		));
 
@@ -107,17 +107,17 @@ class AyFbFriendRank
 			foreach($response['inbox']['data'] as $thread)
 			{
 				
-
+				print_r($thread);
 				//doulouge, nothing else
-				if(count($thread['recent_authors'])==2) {
+				//if(count($thread['recent_authors'])==2) {
 					//$t++;
-					foreach($thread['recent_authors'] as $author) {
+				//	foreach($thread['recent_authors'] as $author) {
 						//if(!empty($this->friends[$author])) $friend = $author;
 						//echo($author);
-					}
+				//	}
 					//$this->giveCriteriaScore($friend, 'inbox_in_conversation');
 					//$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);											
-				}
+				//}
 					//echo($thread['message_count'] . '/');
 				//	foreach($thread['participants'] as $author) {
 				//		if(!empty($this->friends[$author['user_id']])) $friend = $author['user_id'];
