@@ -49,6 +49,7 @@ $close = $rank->getCloseFriends();
 
 $file = 'ranked.txt';
 if(file_exists($file)) {
+	echo('hello');
 	$rankedFriends = unserialize(file_get_contents($file));
 	print_r($rankedFriends);
 } else {
