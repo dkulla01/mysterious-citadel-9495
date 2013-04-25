@@ -36,7 +36,7 @@ class LinkAggregator {
 		
 		//if(!empty($response['error'])) print_r($response['error']);
 		
-		print_r($links);
+		print_r($response);
 		//echo('//////////');
 	}
 	
