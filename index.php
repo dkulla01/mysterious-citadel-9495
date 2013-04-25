@@ -48,13 +48,9 @@ $rank = new AyFbFriendRank($facebook);
 $close = $rank->getCloseFriends();
 
 $file = 'ranked.txt';
-echo(filesize($file));
 if(filesize($file) > 0) {
-	echo('hello');
 	$rankedFriends = unserialize(file_get_contents($file));
-	print_r($rankedFriends);
 } else {
-	echo('whyohwhy');
 	$rankedFriends = $rank->getFriends();
 	file_put_contents($file,serialize($rankedFriends));
 }
@@ -83,7 +79,7 @@ $agg = new LinkAggregator($facebook);
 
 //print_r($close);
 
-//$agg->getLinks($close);
+$agg->getLinks($close);
 
 //print_r($holyshit);
 
