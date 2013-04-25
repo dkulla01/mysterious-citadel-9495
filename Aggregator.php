@@ -28,12 +28,12 @@ class LinkAggregator {
 	public function getPastWeek($id) {
 		
 		 echo($id);
-		
+		/*
 		$links = $fb->api(array(
 			'method' => 'fql.query',
 			'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
 		));
-		
+		*/
 		//print_r($links);
 		echo('//////////');
 	}
