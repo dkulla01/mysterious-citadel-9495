@@ -92,7 +92,7 @@ class LinkAggregator {
 				//echo(': ' . $link['title'] . ' / ');
 				return $link;				
 			} else {
-				return NULL;
+				print_r($response);
 			}
 			//echo(' / ');
 			//foreach($response['data'] as $link)
