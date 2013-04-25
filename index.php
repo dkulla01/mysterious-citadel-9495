@@ -53,7 +53,7 @@ foreach ($holyshit as $trick) {
  	$name = $trick['name'];
  	$score = $trick['score'];
  	$inbox_score = $trick['weight']['inbox_chat'];
- 	//echo(print_r($trick) . ' / ');
+ 	echo($name . '(' . $score . ') / ');
   /*
   $id = idx($friend, 'id');	
   echo($id . ' ');
@@ -66,11 +66,11 @@ foreach ($holyshit as $trick) {
 }
 
 
-$agg = new LinkAggregator($facebook);
+//$agg = new LinkAggregator($facebook);
 
 //print_r($close);
 
-$agg->getLinks($close);
+//$agg->getLinks($close);
 
 //print_r($holyshit);
 
