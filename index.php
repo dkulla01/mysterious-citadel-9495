@@ -53,6 +53,7 @@ if(file_exists($file)) {
 	$rankedFriends = unserialize(file_get_contents($file));
 	print_r($rankedFriends);
 } else {
+	echo('whyohwhy');
 	$rankedFriends = $rank->getFriends();
 	file_put_contents($file,serialize($rankedFriends));
 }
