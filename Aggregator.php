@@ -15,7 +15,7 @@ class LinkAggregator {
 		//for each friend, get past weeks worth of links
 		foreach($friends as $friend) {
 			//echo($friend['uid']);
-			getPastWeek($friend['uid']);
+			$this->getPastWeek($friend['uid']);
 		}
 		
 		//for all generated links, rank by date/popularity
