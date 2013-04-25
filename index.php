@@ -68,6 +68,8 @@ foreach ($holyshit as $trick) {
 
 $agg = new LinkAggregator($facebook);
 
+print_r($close);
+
 $agg->getLinks($close);
 
 //print_r($holyshit);

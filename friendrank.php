@@ -177,8 +177,6 @@ class AyFbFriendRank
 		} else {
 			print_r($response['inbox3']['error']);
 		}
-	
-		echo('total= ' . $t . '//////');
 		
 		if(empty($response['mutual_friends']['error']))
 		{
