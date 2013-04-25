@@ -100,21 +100,23 @@ class AyFbFriendRank
 		//	echo($this->friends[$friend['uid']]['name'] . '/');
 		//}
 
-		//$t = 0;
+		$t = 0;
 		if(empty($response['inbox']['error']))
 		{
 
 			foreach($response['inbox']['data'] as $thread)
 			{
 				
-				print_r($thread);
+				//print_r($thread);
 				//doulouge, nothing else
 				//if(count($thread['recent_authors'])==2) {
-					//$t++;
-				//	foreach($thread['recent_authors'] as $author) {
-						//if(!empty($this->friends[$author])) $friend = $author;
-						//echo($author);
-				//	}
+				//	$t++;
+				foreach($thread['recent_authors'] as $author) {
+					if(!empty($this->friends[$author])) $friend = $author;
+					$this->giveCriteriaScore($friend, 'inbox_in_conversation');
+				    $this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);
+					echo($this->friends[$friend] . ' ' . $thread['message_count'] . ' / ');
+				}
 					//$this->giveCriteriaScore($friend, 'inbox_in_conversation');
 					//$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);											
 				//}
