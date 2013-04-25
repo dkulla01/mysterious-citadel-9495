@@ -29,12 +29,14 @@ class LinkAggregator {
 		
 		 //echo($id);
 		
-		$links = $fb->api(array(
+		$response = $fb->api(array(
 			'method' => 'fql.query',
 			'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
 		));
 		
-		print_r($links);
+		if(!empty($response['error'])) print_r($response['error']);
+		
+		//print_r($links);
 		//echo('//////////');
 	}
 	
