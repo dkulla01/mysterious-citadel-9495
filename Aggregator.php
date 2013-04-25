@@ -42,6 +42,8 @@ class LinkAggregator {
 		{
 			foreach($response['data'] as $link)
 			{
+				print_r($link);
+				
 				//echo($name . ': ' . $link['title'] . ' / ');
 			}
 		} else {
