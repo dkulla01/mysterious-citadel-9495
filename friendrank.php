@@ -100,6 +100,7 @@ class AyFbFriendRank
 		//	echo($this->friends[$friend['uid']]['name'] . '/');
 		//}
 
+		$t = 0;
 		if(empty($response['inbox']['error']))
 		{
 
@@ -109,6 +110,7 @@ class AyFbFriendRank
 
 				//doulouge, nothing else
 				if(count($thread['recent_authors'])==2) {
+					$t++;
 					foreach($thread['recent_authors'] as $author) {
 						if(!empty($this->friends[$author])) $friend = $author;
 					}
@@ -134,7 +136,8 @@ class AyFbFriendRank
 		} else {
 			print_r($response['inbox']['error']);
 		}
-
+		echo ('total= ' . $t . '//////');
+		
 		if(empty($response['mutual_friends']['error']))
 		{
 			foreach($response['mutual_friends']['data'] as $friend)
