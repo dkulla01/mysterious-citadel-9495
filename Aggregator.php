@@ -17,7 +17,7 @@ class LinkAggregator {
 		$links = array();
 		$i = 0;
 		
-		while($i < 30) {		
+		while($i < 40) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
