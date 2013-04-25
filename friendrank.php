@@ -237,10 +237,11 @@ class AyFbFriendRank
 		
 		$close = array();
 		$keys = array_keys($friends);
-		
+		print_r($keys);
 		for($i = 0; $i < 50; $i++) {
+			//echo()
 			$close[$keys[$i]] = $friends[$keys[$i]];
-			echo($i . '. ' . $close[$keys[$i]]['name'] );
+			//echo($i+1 . '. ' . $close[$keys[$i]]['name'] );
 		}
 		
 		
