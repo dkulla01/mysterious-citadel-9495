@@ -48,13 +48,13 @@ $rank = new AyFbFriendRank($facebook);
 $close = $rank->getCloseFriends();
 
 $file = 'ranked.txt';
-if(file_exists($file)) {
-	$rankedFriends = file_get_contents($file);
-	print_r($rankedFriends);
-} else {
+//if(file_exists($file)) {
+//	$rankedFriends = unserialize(file_get_contents($file));
+//	print_r($rankedFriends);
+//} else {
 	$rankedFriends = $rank->getFriends();
-	file_put_contents($file,$rankedFriends);
-}
+	file_put_contents($file,serialize($rankedFriends));
+//}
 //$ranked_data = serialize($rankedFriends);
 
 
