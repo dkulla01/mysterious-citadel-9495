@@ -17,7 +17,7 @@ class LinkAggregator {
 		$links = array();
 		$i = 0;
 		
-		while($i < 10) {		
+		while($i < 15) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
@@ -26,7 +26,7 @@ class LinkAggregator {
 				//print_r($friend);
 				$link = $this->getFriendLinks($friend['uid']);
 				//$i++;
-				if(!empty($link)) {				//some people return nothing, randomly
+				if(!empty($link) && !containsLink($link['title'])) {				//some people return nothing, randomly
 					$links[$friend['uid']] = $link;
 				 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
 					$i++;
@@ -115,7 +115,8 @@ class LinkAggregator {
 	
 	//return true if the string contains a link
 	private function containsLink($s) {
-		
+		preg_match('/[a-zA-Z]+:\/\/[0-9a-zA-Z;.\/?:@=_#&%~,+$]+/', $s, $matches);
+		return(empty($matches));
 	}
 	
 	//sort links from earliest > latest
