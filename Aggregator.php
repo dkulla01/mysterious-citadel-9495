@@ -87,10 +87,13 @@ class LinkAggregator {
 		{
 			//echo($name);
 			//print_r($response);
-			
-			$link = $response[0];
-			//echo(': ' . $link['title'] . ' / ');
-			return $link;
+			if(!empty($response)) {
+				$link = $response[0];
+				//echo(': ' . $link['title'] . ' / ');
+				return $link;				
+			} else {
+				return NULL;
+			}
 			//echo(' / ');
 			//foreach($response['data'] as $link)
 			//{
