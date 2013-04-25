@@ -116,7 +116,7 @@ class LinkAggregator {
 	//return true if the string contains a link
 	private function containsLink($s) {
 		preg_match('/[a-zA-Z]+:\/\/[0-9a-zA-Z;.\/?:@=_#&%~,+$]+/', $s, $matches);
-		return(empty($matches));
+		return(!empty($matches));
 	}
 	
 	//sort links from earliest > latest
