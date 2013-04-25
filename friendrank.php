@@ -237,7 +237,7 @@ class AyFbFriendRank
 		$keys = array_keys($this->friends);
 		//print_r($this->friends);
 		//print_r($keys);
-		for($i = 0; $i < 5; $i++) {
+		for($i = 0; $i < 20; $i++) {
 			//echo()
 			$close[$i] = $this->friends[$i];
 			//echo($i+1 . '. ' . $close[$i]['name'] );
