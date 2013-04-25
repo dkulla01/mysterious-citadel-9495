@@ -37,6 +37,7 @@ class LinkAggregator {
 		
 		$i = 0;
 		foreach($links as $link) {
+			if(containsLink($link['title'])) echo('trick');
 			echo('<p>' . $i . ': ' . $link['title'] . '</p>');
 			$i++;
 		}
