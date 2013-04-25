@@ -12,7 +12,7 @@
 // Defined in 'AppInfo.php'
 require_once('AppInfo.php');
 
-require_once('friendrank.php');
+require_once('FriendRank.php');
 
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {

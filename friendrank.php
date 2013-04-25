@@ -76,15 +76,8 @@ class AyFbFriendRank
 			'mutual_friends'	=> 'fql?q=SELECT uid, mutual_friend_count FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())',
 			'feed'				=> 'fql?q=SELECT actor_id, target_id, likes, comments FROM stream WHERE source_id=me() LIMIT 500',
 			'albums'			=> 'fql?q=SELECT aid FROM album WHERE owner=me()',
-			'inbox'				=> 'fql?q=SELECT participants,num_messages FROM unified_thread WHERE folder = "inbox" AND is_group_conversation = 0 LIMIT 100'
-			/*array
-			(
-				'name'			=> 'photos',
-				'relative_url'	=> 'fql?q=SELECT object_id FROM photo WHERE aid IN (SELECT aid FROM album WHERE owner=me())'
-			),
-			'photo_friend_likes'		=> 'fql?q=SELECT user_id FROM like WHERE object_id IN ({result=photos:$.data.*.object_id})',
-			'photo_friend_comments'		=> 'fql?q=SELECT fromid FROM comment WHERE object_id IN ({result=photos:$.data.*.object_id})'
-			'photo_tags'		=> 'fql?q=SELECT subject FROM photo_tag WHERE object_id IN ({result=photos:$.data.*.object_id})'*/
+			//'inbox'				=> 'fql?q=SELECT participants,num_messages FROM unified_thread WHERE folder = "inbox" AND is_group_conversation = 0 LIMIT 100'
+			'inbox'				=> 'fql?q=SELECT recent_authors,message_count FROM thread WHERE folder_id = 0'
 		));
 
 		if(!empty($response['me']['error']))
@@ -115,16 +108,22 @@ class AyFbFriendRank
 				
 
 				//doulouge, nothing else
-				//if(count($thread['recent_authors'])==2) {
-					//echo($thread['message_count'] . '/');
-					foreach($thread['participants'] as $author) {
-						if(!empty($this->friends[$author['user_id']])) $friend = $author['user_id'];
+				if(count($thread['recent_authors'])==2) {
+					foreach($thread['recent_authors'] as $author) {
+						if(!empty($this->friends[$author])) $friend = $author;
 					}
+					$this->giveCriteriaScore($friend, 'inbox_in_conversation');
+					$this->giveCriteriaScore($friend, 'inbox_chat', $thread['message_count']);											
+				}
+					//echo($thread['message_count'] . '/');
+				//	foreach($thread['participants'] as $author) {
+				//		if(!empty($this->friends[$author['user_id']])) $friend = $author['user_id'];
+				//	}
 					//echo($friend . ' ');
 					//echo($this->friends[$friend]['name']);
 					//echo($thread['num_messages'] . '/');					
-					$this->giveCriteriaScore($friend, 'inbox_in_conversation');
-					$this->giveCriteriaScore($friend, 'inbox_chat', $thread['num_messages']);
+				//	$this->giveCriteriaScore($friend, 'inbox_in_conversation');
+				//	$this->giveCriteriaScore($friend, 'inbox_chat', $thread['num_messages']);
 					
 					//$this->giveCriteriaScore($user['id'], 'inbox_in_conversation');
 					
