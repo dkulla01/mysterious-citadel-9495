@@ -28,7 +28,7 @@ class LinkAggregator {
 	//given a user id, return past weeks worth of links
 	public function getPastWeek($id, $name) {
 		
-		 //echo($id);
+		 echo($name . ' / ');
 		
 		$response = $this->fb->api(array(
 			'method' => 'fql.query',
@@ -40,10 +40,9 @@ class LinkAggregator {
 		
 		if(empty($response['error']))
 		{
-
 			foreach($response['data'] as $link)
 			{
-				echo($name . ': ' . $link['title'] . ' / ');
+				//echo($name . ': ' . $link['title'] . ' / ');
 			}
 		} else {
 			print_r($response['error']);
