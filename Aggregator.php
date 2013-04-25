@@ -35,13 +35,13 @@ class LinkAggregator {
 			
 		}
 
-		print_r($this->sortByDate($links));
-		/*
+		$newlinks = $this->sortByDate($links);
+		
 		$i = 0;
 		foreach($newlinks as $link) {
 			echo('<p>' . $i . ': ' . $link['title'] . ' (' . date("Y-m-d\TH:i:s\Z",$link['created_time'])  . ')</p>');
 			$i++;
-		}*/
+		}
 		
 		
 		
