@@ -197,8 +197,8 @@ if ($user_id) {
 			<h2 id='image'>Images</h2>
 			<h2 id='article'>Articles</h2>-->		
 		</aside>
+		<h1 class='title'>All Links</h1>
 		<section>
-			<h1 class='title'>All Links</h1>
 			
 			<?php
 			
