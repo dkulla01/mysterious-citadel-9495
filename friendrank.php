@@ -249,8 +249,10 @@ class AyFbFriendRank
 	public function getMedFriends($rankedFriends) {
 		
 		$med = array();
+		$y = 0;
 		for($i = 50; $i < 150; $i++) {
-			$med[$i] = $rankedFriends[$i];
+			$med[$y] = $rankedFriends[$i];
+			$y++;
 		}
 		
 		return $med;		
@@ -261,9 +263,11 @@ class AyFbFriendRank
 	public function getFarFriends($rankedFriends) {
 	
 		$far = array();
+		$y = 0;
 		for($i = 150; $i < count($this->friends); $i++) {
 			//echo()
-			$far[$i] = $rankedFriends[$i];
+			$far[$y] = $rankedFriends[$i];
+			$y++;
 			//echo($i+1 . '. ' . $far[$i]['name'] );
 		}
 		
