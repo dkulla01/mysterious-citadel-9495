@@ -52,7 +52,7 @@ if(filesize($file) > 0) {
 	$rankedFriends = $rank->getFriends();
 	file_put_contents($file,serialize($rankedFriends));
 }
-//print_r($rankedFriends);
+print_r($rankedFriends);
 
 //$ranked_data = serialize($rankedFriends);
 $close = $rank->getCloseFriends($rankedFriends);
