@@ -28,11 +28,11 @@ class LinkAggregator {
 		
 		while($i < 1) {		
 			$s = rand(0, $max_num);					//random person from list
-			echo $s; $i++;
+			//echo $s; $i++;
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
 				$friend = $friends[$s];
-				//$i++;
+				$i++;
 				//print_r($friend);
 				echo $friend['uid'] . ' / ';
 				
