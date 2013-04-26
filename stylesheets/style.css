@@ -114,8 +114,8 @@ article em {
 .col1 img,
 .col2 img,
 .col3 img {
+  margin: 5px 0;
   max-width: none;
-  display: block;
   width: 100%;
 }
 

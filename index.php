@@ -198,22 +198,24 @@ if ($user_id) {
 			
 			<?php
 			
-				/*foreach($please as $link) {
+				foreach($please as $link) {
+				
 					echo '<article data-url="' . $link['url'] . '" class="col1 small article">'
 						. '<h4>' . $link['name'] . '</h4>'
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
-						. '<h2>' . $link['title'] . '</h2>'
-						. '<p>' . $link['summary'] . '<p></article>';				
-				}*/
+						. '<h2>' . $link['title'] . '</h2>';
+					if(!empty($link['image_urls'])) echo '<img src="' . $link['image_urls'][0] . '" alt="Image" />';					
+					echo '<p>' . $link['summary'] . '<p></article>';				
+				}
 			
 			?>
-			  <article class="col1 med school article">
+			 <!-- <article class="col1 med school article">
 			  	<h4>Jay Peterson</h4>
 			  	<h5>4/24/2013 4:59PM</h5>
 			  	<h2>This is the title of the shared article that etc Something</h2>
 			  	<img src="http://farm4.static.flickr.com/3197/3122875223_917b1ccafc.jpg" alt="McCall Cover, Joan Caulfield" />
 			  	<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>			    	
-			  </article>								
+			  </article>-->								
 		</section>
 	</div>
     
