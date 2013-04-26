@@ -39,6 +39,9 @@ class AyFbFriendRank
 
 	/* calls batch() to get friend data
 	 *
+	 *
+	 *
+	 *
 	 */
 	public function getFriends()
 	{		

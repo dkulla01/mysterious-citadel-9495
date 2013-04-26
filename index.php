@@ -54,13 +54,13 @@ $rankedFriends;
 $rankedFriends = $rank->getFriends();
 //	file_put_contents($file,serialize($rankedFriends));
 ///}
-//print_r($rankedFriends);
+print_r($rankedFriends);
 
 //$ranked_data = serialize($rankedFriends);
 $close = $rank->getCloseFriends($rankedFriends);
 $med = $rank->getMedFriends($rankedFriends);
 $far = $rank->getFarFriends($rankedFriends);
-
+ 
 /*foreach ($far as $trick) {
  
  	$name = $trick['name'];
@@ -68,6 +68,7 @@ $far = $rank->getFarFriends($rankedFriends);
  	$inbox_score = $trick['weight']['inbox_chat'];
  	echo($name . '(' . $score . ') / ');
 }*/
+
 
 $agg = new LinkAggregator($facebook);
 
