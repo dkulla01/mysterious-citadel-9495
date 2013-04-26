@@ -37,11 +37,12 @@ class LinkAggregator {
 	public function getLinks($friends, $relationship) {
 		
 		$max_num = count($friends);
-		$nums = array_fill(0,$max_num,false);
-		$i = 0;
+		echo($max_num);
+		//$nums = array_fill(0,$max_num,false);
+		//$i = 0;
 		
 		//echo $max_num;
-		
+		/*
 		while($i < 15) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
@@ -49,7 +50,7 @@ class LinkAggregator {
 				$nums[$s] = true;
 				$friend = $friends[$s];
 				echo $friend['uid'] . ' / ';
-				/*
+				
 				$link = $this->getFriendLinks($friend['uid']);
 				
 				if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
@@ -58,9 +59,9 @@ class LinkAggregator {
 					$this->links[$friend['uid']] = $link;
 				 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
 					$i++;
-				}*/
+				}
 			}			
-		}
+		}*/
 	}
 	
 	//given a user id, return 1 link
