@@ -54,14 +54,14 @@ if(filesize($file) > 0) {
 $close = $rank->getCloseFriends($rankedFriends);
 $med = $rank->getMedFriends($rankedFriends);
 $far = $rank->getFarFriends($rankedFriends);
-
+/*
 foreach ($rankedFriends as $trick) {
  
  	$name = $trick['name'];
  	$score = $trick['score'];
  	$inbox_score = $trick['weight']['inbox_chat'];
  	echo($name . '(' . $score . ') / ');
-}
+}*/
 
 
 $agg = new LinkAggregator($facebook);
@@ -198,7 +198,7 @@ if ($user_id) {
 			
 			<?php
 			
-			/*	foreach($please as $link) {
+				foreach($please as $link) {
 				
 					echo '<article data-url="' . $link['url'] . '" class="col1 article ' . $link['class'] . '">'
 						. '<h4>' . $link['name'] . '</h4>'
@@ -206,7 +206,7 @@ if ($user_id) {
 						. '<h2>' . $link['title'] . '</h2>';
 					if(!empty($link['image_urls'])) echo '<img src="' . $link['image_urls'][0] . '" alt="Image" />';					
 					echo '<p>' . $link['summary'] . '<p></article>';				
-				}*/
+				}
 			
 			?>
 			 <!-- <article class="col1 med school article">
