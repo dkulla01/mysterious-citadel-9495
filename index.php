@@ -55,12 +55,12 @@ $close = $rank->getCloseFriends($rankedFriends);
 $med = $rank->getMedFriends($rankedFriends);
 $far = $rank->getFarFriends($rankedFriends);
 
-/*foreach ($rankedFriends as $trick) {
+foreach ($far as $trick) {
  
  	$name = $trick['name'];
  	$score = $trick['score'];
  	$inbox_score = $trick['weight']['inbox_chat'];*/
- 	//echo($name . '(' . $score . ') / ');
+ 	echo($name . '(' . $score . ') / ');
   /*
   $id = idx($friend, 'id');	
   echo($id . ' ');
@@ -70,18 +70,18 @@ $far = $rank->getFarFriends($rankedFriends);
   //$link = idx($facebook->api($query), 'data', array());
   
   //$friend['shlink'] = $link;
-//}
+}
 
 
 $agg = new LinkAggregator($facebook);
 
 //print_r($close);
 
-$agg->getLinks($close, 'small');
-$agg->getLinks($med, 'med');
-$agg->getLinks($far, 'big');
+//$agg->getLinks($close, 'small');
+//$agg->getLinks($med, 'med');
+//$agg->getLinks($far, 'big');
 
-$please = $agg->getSortedLinks();
+//$please = $agg->getSortedLinks();
 
 //print_r($holyshit);
 
