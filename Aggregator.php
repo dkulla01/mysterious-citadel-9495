@@ -27,6 +27,7 @@ class LinkAggregator {
 		while($i < 15) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
+				
 				$nums[$s] = true;
 				$friend = $friends[$s];
 
