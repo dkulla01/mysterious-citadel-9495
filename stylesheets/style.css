@@ -58,12 +58,11 @@ section {
 	padding-top: 50px;
 }
 
-section h1 {
-	width: 100%;
+.content > h1 {
 	font-size: 30px;
-	position: relative;
-	top: -35px;
-	left: 10px;
+	position: absolute;
+	left: 28%;
+	padding-left: 8px;
 }
 
 article {
