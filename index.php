@@ -72,9 +72,9 @@ $agg = new LinkAggregator($facebook);
 
 //print_r($close);
 
-$agg->getLinks($close, 'small');
-$agg->getLinks($med, 'med');
-$agg->getLinks($far, 'big');
+//$agg->getLinks($close, 'small');
+//$agg->getLinks($med, 'med');
+//$agg->getLinks($far, 'big');
 
 //$test = $agg->tester();
 //print_r($test);
