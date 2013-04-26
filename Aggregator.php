@@ -13,7 +13,7 @@ class LinkAggregator {
 	public function getLinks($friends) {
 		
 		$max_num = count($friends);
-		$nums = array_fill(0,$num,false);
+		$nums = array_fill(0,$max_num,false);
 		$links = array();
 		$i = 0;
 		
