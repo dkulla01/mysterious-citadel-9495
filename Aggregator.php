@@ -37,7 +37,7 @@ class LinkAggregator {
 	public function getLinks($friends, $relationship) {
 		
 		$max_num = count($friends);
-		echo($max_num);
+		//echo($max_num);
 		$nums = array_fill(0,$max_num,false);
 		$i = 0;
 		
