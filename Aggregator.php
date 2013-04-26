@@ -18,7 +18,7 @@ class LinkAggregator {
 	public function getMyLinks() {
 		$response = $this->fb->api(array(
 			'method' => 'fql.query',
-			'query' => 'SELECT title,created_time,url,summary,image_urls FROM link WHERE owner = me()'
+			'query' => 'SELECT title,created_time,url,summary,picture FROM link WHERE owner = me()'
 			//'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
 		));
 
@@ -75,7 +75,7 @@ class LinkAggregator {
 		if(!empty($id)) {
 			$response = $this->fb->api(array(
 				'method' => 'fql.query',
-				'query' => 'SELECT title,created_time,url,summary,image_urls FROM link WHERE owner = ' . $id . ' LIMIT 1'
+				'query' => 'SELECT title,created_time,url,summary,picture FROM link WHERE owner = ' . $id . ' LIMIT 1'
 				//'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
 			));
 	

@@ -208,7 +208,7 @@ if ($user_id) {
 						. '<h4>' . $link['name'] . '</h4>'
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>';
-					if(!empty($link['image_urls'])) echo '<img src="' . $link['image_urls'][0] . '" alt="Image" />';					
+					if(!empty($link['picture'])) echo '<img src="' . $link['picture'] . '" alt="Image" />';					
 					echo '<p>' . $link['summary'] . '<p></article>';				
 				}
 
@@ -218,7 +218,7 @@ if ($user_id) {
 						. '<h4>' . he(idx($basic, 'name')) . '</h4>'
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>';
-					if(!empty($link['image_urls'])) echo '<img src="' . $link['image_urls'][0] . '" alt="Image" />';					
+					if(!empty($link['picture'])) echo '<img src="' . $link['picture'] . '" alt="Image" />';					
 					echo '<p>' . $link['summary'] . '<p></article>';				
 				}
 			
