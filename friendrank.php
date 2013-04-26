@@ -246,11 +246,11 @@ class AyFbFriendRank
 	}
 	
 	//return friends 50-150
-	public function getMedFriends() {
+	public function getMedFriends($rankedFriends) {
 		
 		$med = array();
 		for($i = 50; $i < 150; $i++) {
-			$med[$i] = $this->friends[$i];
+			$med[$i] = $rankedFriends[$i];
 		}
 		
 		return $med;		
@@ -258,16 +258,16 @@ class AyFbFriendRank
 	
 	
 	//return everyone else
-	public function getFarFriends() {
+	public function getFarFriends($rankedFriends) {
 	
 		$far = array();
 		for($i = 150; $i < count($this->friends); $i++) {
 			//echo()
-			$far[$i] = $this->friends[$i];
-			echo($i+1 . '. ' . $far[$i]['name'] );
+			$far[$i] = $rankedFriends[$i];
+			//echo($i+1 . '. ' . $far[$i]['name'] );
 		}
 		
-		//return $far;		
+		return $far;		
 	}
 
 	public function sortFriends()

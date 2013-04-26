@@ -4,17 +4,18 @@ class LinkAggregator {
 
 	private $fb;
 	
+	private $links = array();
+	
 	public function __construct(Facebook $fb)
 	{
 		$this->fb	= $fb;
 	}
 	
 	//given a sorted list of friends, return the top 30 links, sorted by date and popularity
-	public function getLinks($friends) {
+	public function getLinks($friends, $relationship) {
 		
 		$max_num = count($friends);
 		$nums = array_fill(0,$max_num,false);
-		$links = array();
 		$i = 0;
 		
 		while($i < 15) {		
@@ -28,7 +29,8 @@ class LinkAggregator {
 				//$i++;
 				if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
 					$link['name'] = $friend['name'];
-					$links[$friend['uid']] = $link;
+					$link['class'] = $relationship;
+					$this->links[$friend['uid']] = $link;
 				 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
 					$i++;
 				}	
@@ -36,8 +38,10 @@ class LinkAggregator {
 			
 		}
 
-		$newlinks = $this->sortByDate($links);
-		return $newlinks;
+		//$newlinks = $this->sortByDate($links);
+		//return $newlinks;
+		
+		
 		/*
 		$i = 0;
 		foreach($newlinks as $link) {
@@ -123,6 +127,10 @@ class LinkAggregator {
 	private function containsLink($s) {
 		preg_match('/[a-zA-Z]+:\/\/[0-9a-zA-Z;.\/?:@=_#&%~,+$]+/', $s, $matches);
 		return !empty($matches);
+	}
+	
+	public function getSortedLinks() {
+		return $this->sortByDate($this->links);
 	}
 	
 	//sort links from earliest > latest

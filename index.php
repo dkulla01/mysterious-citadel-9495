@@ -52,12 +52,14 @@ if(filesize($file) > 0) {
 }
 //$ranked_data = serialize($rankedFriends);
 $close = $rank->getCloseFriends($rankedFriends);
+$med = $rank->getMedFriends($rankedFriends);
+$far = $rank->getFarFriends($rankedFriends);
 
-foreach ($rankedFriends as $trick) {
+/*foreach ($rankedFriends as $trick) {
  
  	$name = $trick['name'];
  	$score = $trick['score'];
- 	$inbox_score = $trick['weight']['inbox_chat'];
+ 	$inbox_score = $trick['weight']['inbox_chat'];*/
  	//echo($name . '(' . $score . ') / ');
   /*
   $id = idx($friend, 'id');	
@@ -68,14 +70,18 @@ foreach ($rankedFriends as $trick) {
   //$link = idx($facebook->api($query), 'data', array());
   
   //$friend['shlink'] = $link;
-}
+//}
 
 
 $agg = new LinkAggregator($facebook);
 
 //print_r($close);
 
-$please = $agg->getLinks($close);
+$agg->getLinks($close, 'small');
+$agg->getLinks($med, 'med');
+$agg->getLinks($far, 'big');
+
+$please = $agg->getSortedLinks();
 
 //print_r($holyshit);
 
@@ -200,7 +206,7 @@ if ($user_id) {
 			
 				foreach($please as $link) {
 				
-					echo '<article data-url="' . $link['url'] . '" class="col1 small article">'
+					echo '<article data-url="' . $link['url'] . '" class="col1 article ' . $link['class'] . '">'
 						. '<h4>' . $link['name'] . '</h4>'
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>';
