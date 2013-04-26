@@ -11,6 +11,10 @@ class LinkAggregator {
 		$this->fb	= $fb;
 	}
 	
+	public function tester() {
+		return $this->links;
+	} 
+	
 	//given a sorted list of friends, return the top 30 links, sorted by date and popularity
 	public function getLinks($friends, $relationship) {
 		
