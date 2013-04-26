@@ -44,6 +44,8 @@ $facebook = new Facebook(array(
 $rank = new AyFbFriendRank($facebook);
 
 $file = 'ranked.txt';
+$rankedFriends;
+
 if(filesize($file) > 0) {
 	echo('cached');
 	$rankedFriends = unserialize(file_get_contents($file));
