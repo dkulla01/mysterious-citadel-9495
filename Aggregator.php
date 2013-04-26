@@ -71,22 +71,23 @@ class LinkAggregator {
 	//given a user id, return 1 link
 	private function getFriendLinks($id) {
 		
+		if(!empty($id)) {
+			$response = $this->fb->api(array(
+				'method' => 'fql.query',
+				'query' => 'SELECT title,created_time,url,summary,image_urls FROM link WHERE owner = ' . $id . ' LIMIT 1'
+				//'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
+			));
 	
-		$response = $this->fb->api(array(
-			'method' => 'fql.query',
-			'query' => 'SELECT title,created_time,url,summary,image_urls FROM link WHERE owner = ' . $id . ' LIMIT 1'
-			//'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
-		));
-
-		if(empty($response['error']))
-		{
-			if(!empty($response)) {
-				$link = $response[0];
-			} 
-			return $link;
-		} else {
-			print_r($response['error']);
-		}		
+			if(empty($response['error']))
+			{
+				if(!empty($response)) {
+					$link = $response[0];
+				} 
+				return $link;
+			} else {
+				print_r($response['error']);
+			}
+	  }		
 	}
 	
 	//return true if the string contains a link
