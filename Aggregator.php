@@ -29,7 +29,9 @@ class LinkAggregator {
 				$friend = $friends[$s];
 				//$i++;
 				//print_r($friend);
-				$link = $this->getFriendLinks($friend['uid']);
+				echo $friend['uid'] . ' / ';
+				//$link = $this->getFriendLinks($friend['uid']);
+				
 				//$i++;
 				if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
 					$link['name'] = $friend['name'];

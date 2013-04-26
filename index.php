@@ -73,7 +73,7 @@ $agg->getLinks($med, 'med');
 $agg->getLinks($far, 'big');
 
 $test = $agg->tester();
-print_r($test);
+//print_r($test);
 
 //$please = $agg->getSortedLinks();
 
@@ -174,7 +174,7 @@ if ($user_id) {
       <?php } ?>
     </header>-->
     
-	<div class='content'>
+	<!--<div class='content'>
 		<aside>
 			<h1 class='error'>No articles to display.</h1>			
 			<div class='radar'>
@@ -194,11 +194,11 @@ if ($user_id) {
 			<h2 id='article'>Articles</h2>		
 		</aside>
 		<section>
-			<h1 class='title'>All Links</h1>
+			<h1 class='title'>All Links</h1>-->
 			
 			<?php
 			
-				foreach($please as $link) {
+				/*foreach($please as $link) {
 				
 					echo '<article data-url="' . $link['url'] . '" class="col1 article ' . $link['class'] . '">'
 						. '<h4>' . $link['name'] . '</h4>'
@@ -206,7 +206,7 @@ if ($user_id) {
 						. '<h2>' . $link['title'] . '</h2>';
 					if(!empty($link['image_urls'])) echo '<img src="' . $link['image_urls'][0] . '" alt="Image" />';					
 					echo '<p>' . $link['summary'] . '<p></article>';				
-				}
+				}*/
 			
 			?>
 			 <!-- <article class="col1 med school article">
@@ -215,8 +215,8 @@ if ($user_id) {
 			  	<h2>This is the title of the shared article that etc Something</h2>
 			  	<img src="http://farm4.static.flickr.com/3197/3122875223_917b1ccafc.jpg" alt="McCall Cover, Joan Caulfield" />
 			  	<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>			    	
-			  </article>-->								
-		</section>
+			  </article>							
+		</section>  -->	
 	</div>
     
   </body>
