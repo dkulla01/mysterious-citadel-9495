@@ -54,8 +54,8 @@ if(filesize($file) > 0) {
 $close = $rank->getCloseFriends($rankedFriends);
 $med = $rank->getMedFriends($rankedFriends);
 $far = $rank->getFarFriends($rankedFriends);
-/*
-foreach ($rankedFriends as $trick) {
+
+/*foreach ($far as $trick) {
  
  	$name = $trick['name'];
  	$score = $trick['score'];
