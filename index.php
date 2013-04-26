@@ -48,7 +48,7 @@ if(filesize($file) > 0) {
 	echo('cached');
 	$rankedFriends = unserialize(file_get_contents($file));
 } else {
-	echo('not');
+	echo('not cached');
 	$rankedFriends = $rank->getFriends();
 	file_put_contents($file,serialize($rankedFriends));
 }
