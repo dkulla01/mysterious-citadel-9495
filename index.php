@@ -209,7 +209,7 @@ if ($user_id) {
 				foreach($myLinks as $link) {
 				
 					echo '<article data-url="' . $link['url'] . '" class="col1 you article" style="display:none">'
-						. '<h4>' . $link['name'] . '</h4>'
+						. '<h4>' . he(idx($basic, 'name') . '</h4>'
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>';
 					if(!empty($link['image_urls'])) echo '<img src="' . $link['image_urls'][0] . '" alt="Image" />';					
