@@ -24,7 +24,7 @@ class LinkAggregator {
 		
 		//echo $max_num;
 		
-		while($i < 20) {		
+		while($i < 15) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
@@ -45,7 +45,8 @@ class LinkAggregator {
 	
 	//given a user id, return 1 link
 	private function getFriendLinks($id) {
-			
+		
+	
 		$response = $this->fb->api(array(
 			'method' => 'fql.query',
 			'query' => 'SELECT title,created_time,url,summary,image_urls FROM link WHERE owner = ' . $id . ' LIMIT 1'
