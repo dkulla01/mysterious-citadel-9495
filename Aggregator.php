@@ -39,6 +39,7 @@ class LinkAggregator {
 		if(!empty($friends)) {
 		
 			$max_num = count($friends);
+			if($relationship == 'big') { echo $max_num; }
 			//echo($max_num);
 			$nums = array_fill(0,$max_num,false);
 			$i = 0;
