@@ -24,6 +24,8 @@ class LinkAggregator {
 		$nums = array_fill(0,$max_num,false);
 		$i = 0;
 		
+		echo $max_num;
+		/*
 		while($i < 1) {		
 			$s = rand(0, $max_num);					//random person from list
 			if(!$nums[$s]) {						//dont repeat person
@@ -43,9 +45,9 @@ class LinkAggregator {
 				 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
 					$i++;
 				}*/	
-			}		
+		//	}		
 			
-		}
+		//}
 		echo '/////////////////';
 
 		//$newlinks = $this->sortByDate($links);
