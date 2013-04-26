@@ -208,8 +208,10 @@ if ($user_id) {
 						. '<h4>' . $link['name'] . '</h4>'
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>';
-					if(!empty($link['picture'])) echo '<img src="' . $link['picture'] . '" alt="Image" />';					
-					echo '<p>' . $link['summary'] . '<p></article>';				
+					if(!empty($link['picture'])) echo '<img src="' . $link['picture'] . '" alt="Image" />';
+					if(!empty($link['owner_comment'])) echo '<p class="comment">"' . $link['owner_comment'] . '"</p>';
+					else echo '<p>' . $link['summary'] . '</p>';	
+					echo '</article>';															
 				}
 
 				foreach($myLinks as $link) {
@@ -219,9 +221,7 @@ if ($user_id) {
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>';
 					if(!empty($link['picture'])) echo '<img src="' . $link['picture'] . '" alt="Image" />';					
-					if(!empty($link['owner_comment'])) echo '<p class="comment">"' . $link['owner_comment'] . '"</p>';
-					else echo '<p>' . $link['summary'] . '</p>';	
-					echo '</article>';			
+					echo '<p>' . $link['summary'] . '<p></article>';		
 				}
 			
 			?>
