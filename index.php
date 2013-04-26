@@ -72,13 +72,10 @@ $agg->getLinks($close, 'small');
 $agg->getLinks($med, 'med');
 $agg->getLinks($far, 'big');
 
-$test = $agg->tester();
+//$test = $agg->tester();
 //print_r($test);
 
-$please = $agg->getSortedLinks();
-
-//print_r($holyshit);
-
+$sortedLinks = $agg->getSortedLinks();
 
 
 $user_id = $facebook->getUser();
@@ -181,24 +178,24 @@ if ($user_id) {
 				<div class='big circle' id='big'></div>  
 				<div class='med circle' id='med'></div> 
 				<div class='small circle' id='small'></div> 
-				<div class='dot'>YOU</div>
+				<div class='dot'></div>
 				<div class='tooltip'>Hello</div>
 			</div>	
 			
 			<h2 class='select' id='all'>Show All</h2>
-			<h2 id='home'>Home Friends</h2>
+			<!--<h2 id='home'>Home Friends</h2>
 			<h2 id='school'>School Friends</h2>
 			<h2 id='top'>Top Stories</h2>
 			<h2 id='video'>Videos</h2>
 			<h2 id='image'>Images</h2>
-			<h2 id='article'>Articles</h2>		
+			<h2 id='article'>Articles</h2>-->		
 		</aside>
 		<section>
 			<h1 class='title'>All Links</h1>
 			
 			<?php
 			
-				foreach($please as $link) {
+				foreach($sortedLinks as $link) {
 				
 					echo '<article data-url="' . $link['url'] . '" class="col1 article ' . $link['class'] . '">'
 						. '<h4>' . $link['name'] . '</h4>'

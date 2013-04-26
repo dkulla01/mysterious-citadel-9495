@@ -32,7 +32,7 @@
 			});			
 		});
 
-		$('.circle').hover(function() {
+		/*$('.circle').hover(function() {
 			
 			var selector = $(this).attr('id');
 			if(selector == 'big') $tooltip.text('Acquaintances');
@@ -57,7 +57,7 @@
 			timer = null;		
 			$tooltip.hide();
 			
-		});
+		});*/
 		
 		$('.circle').click(function(){
 			var selector = $(this).attr('id');
