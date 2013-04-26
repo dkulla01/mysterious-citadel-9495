@@ -76,7 +76,7 @@ $agg->getLinks($far, 'big');
 //print_r($test);
 
 $sortedLinks = $agg->getSortedLinks();
-$myLinks = $agg->getMyLinks();
+//$myLinks = $agg->getMyLinks();
 
 
 $user_id = $facebook->getUser();
@@ -206,7 +206,7 @@ if ($user_id) {
 					echo '<p>' . $link['summary'] . '<p></article>';				
 				}
 
-				foreach($myLinks as $link) {
+				/*foreach($myLinks as $link) {
 				
 					echo '<article data-url="' . $link['url'] . '" class="col1 you article" style="display:none">'
 						. '<h4>' . he(idx($basic, 'name')) . '</h4>'
@@ -214,7 +214,7 @@ if ($user_id) {
 						. '<h2>' . $link['title'] . '</h2>';
 					if(!empty($link['image_urls'])) echo '<img src="' . $link['image_urls'][0] . '" alt="Image" />';					
 					echo '<p>' . $link['summary'] . '<p></article>';				
-				}
+				}*/
 			
 			?>
 			 <!-- <article class="col1 med school article">
