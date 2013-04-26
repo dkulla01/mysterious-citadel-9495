@@ -47,10 +47,10 @@ $file = 'ranked.txt';
 $rankedFriends;
 
 if(filesize($file) > 0) {
-	echo('cached');
+	//echo('cached');
 	$rankedFriends = unserialize(file_get_contents($file));
 } else {
-	echo('not cached');
+	//echo('not cached');
 	$rankedFriends = $rank->getFriends();
 	file_put_contents($file,serialize($rankedFriends));
 }
@@ -74,9 +74,9 @@ $agg = new LinkAggregator($facebook);
 
 //print_r($close);
 
-//$agg->getLinks($close, 'small');
-//$agg->getLinks($med, 'med');
-//$agg->getLinks($far, 'big');
+$agg->getLinks($close, 'small');
+$agg->getLinks($med, 'med');
+$agg->getLinks($far, 'big');
 
 //$test = $agg->tester();
 //print_r($test);
