@@ -34,7 +34,7 @@ class LinkAggregator {
 				$friend = $friends[$s];
 				$i++;
 				//print_r($friend);
-				echo $friend['uid'] . ' / ';
+				echo $s . ': ' . $friend['uid'] . ' / ';
 				
 				//$link = $this->getFriendLinks($friend['uid']);
 				
