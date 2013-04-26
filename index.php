@@ -203,7 +203,7 @@ if ($user_id) {
 						. '<h4>' . $link['name'] . '</h4>'
 						. '<h5>' . date("Y-m-d\TH:i:s\Z",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>'
-						. '<p>' . $link['summary'] . '<p></article';				
+						. '<p>' . $link['summary'] . '<p></article>';				
 				}
 			
 			?>
