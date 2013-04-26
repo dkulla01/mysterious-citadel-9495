@@ -36,32 +36,35 @@ class LinkAggregator {
 	//given a sorted list of friends, return the top 30 links, sorted by date and popularity
 	public function getLinks($friends, $relationship) {
 		
-		$max_num = count($friends);
-		//echo($max_num);
-		$nums = array_fill(0,$max_num,false);
-		$i = 0;
+		if(!empty($friends)) {
 		
-		//echo $max_num;
-		
-		while($i < 15) {		
-			$s = rand(0, $max_num);					//random person from list
-			if(!$nums[$s]) {						//dont repeat person
-				
-				$nums[$s] = true;
-				$friend = $friends[$s];
-				//echo $friend['uid'] . ' / ';
-				
-				$link = $this->getFriendLinks($friend['uid']);
-				
-				if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
-					$link['name'] = $friend['name'];
-					$link['class'] = $relationship;
-					$this->links[$friend['uid']] = $link;
-				 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
-					$i++;
-				}
-			}			
-		}
+			$max_num = count($friends);
+			//echo($max_num);
+			$nums = array_fill(0,$max_num,false);
+			$i = 0;
+			
+			//echo $max_num;
+			
+			while($i < 15) {		
+				$s = rand(0, $max_num);					//random person from list
+				if(!$nums[$s]) {						//dont repeat person
+					
+					$nums[$s] = true;
+					$friend = $friends[$s];
+					//echo $friend['uid'] . ' / ';
+					
+					$link = $this->getFriendLinks($friend['uid']);
+					
+					if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
+						$link['name'] = $friend['name'];
+						$link['class'] = $relationship;
+						$this->links[$friend['uid']] = $link;
+					 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
+						$i++;
+					}
+				}			
+			}
+		}  // !empty($friends)
 	}
 	
 	//given a user id, return 1 link
