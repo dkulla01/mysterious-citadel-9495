@@ -143,7 +143,8 @@
 		});
 		
 		$('article').click(function() { 
-			window.open('article.html', '_newtab');		
+			url = $(this).data('url');
+			window.open(url, '_newtab');		
 		});
 		
 	}); /* end of document.ready */

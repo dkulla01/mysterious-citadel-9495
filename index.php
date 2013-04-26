@@ -199,7 +199,7 @@ if ($user_id) {
 			<?php
 			
 				foreach($please as $link) {
-					echo '<article class="col1 close article">'
+					echo '<article data-url="' . $link['url'] . '" class="col1 close article">'
 						. '<h4>' . $link['name'] . '</h4>'
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>'
