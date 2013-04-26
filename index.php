@@ -73,7 +73,7 @@ $agg->getLinks($med, 'med');
 $agg->getLinks($far, 'big');
 
 $test = $agg->tester();
-//print_r($test);
+print_r($test);
 
 //$please = $agg->getSortedLinks();
 

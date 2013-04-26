@@ -26,30 +26,30 @@ class LinkAggregator {
 		
 		//echo $max_num;
 		
-		while($i < 1) {		
+		while($i < 5) {		
 			$s = rand(0, $max_num);					//random person from list
 			//echo $s; $i++;
 			if(!$nums[$s]) {						//dont repeat person
 				$nums[$s] = true;
 				$friend = $friends[$s];
-				$i++;
+				//$i++;
 				//print_r($friend);
-				echo $s . ': ' . $friend['uid'] . ' / ';
+				//echo $s . ': ' . $friend['uid'] . ' / ';
 				
-				//$link = $this->getFriendLinks($friend['uid']);
+				$link = $this->getFriendLinks($friend['uid']);
 				
 				//$i++;
-				/*if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
+				if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
 					$link['name'] = $friend['name'];
 					$link['class'] = $relationship;
 					$this->links[$friend['uid']] = $link;
 				 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
 					$i++;
-				}*/
+				}
 			}		
 			
 		}
-		echo '/////////////////';
+		//echo '/////////////////';
 
 		//$newlinks = $this->sortByDate($links);
 		//return $newlinks;
