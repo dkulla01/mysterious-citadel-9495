@@ -51,9 +51,9 @@ class LinkAggregator {
 					
 					$nums[$s] = true;
 					$friend = $friends[$s];
-					echo $s . ': ' . $friend['uid'] . ' / ';
-					$i++;
-					/*
+					//echo $s . ': ' . $friend['uid'] . ' / ';
+					//$i++;
+					
 					$link = $this->getFriendLinks($friend['uid']);
 					
 					if(!empty($link) && !$this->containsLink($link['title'])) {				//some people return nothing, randomly
@@ -62,7 +62,7 @@ class LinkAggregator {
 						$this->links[$friend['uid']] = $link;
 					 	//echo('<p>' . $i . ': ' . $friend['name'] . '- ' . $links[$friend['uid']]['title'] . '</p>');
 						$i++;
-					}*/
+					}
 				}			
 			}
 		}  // !empty($friends)
