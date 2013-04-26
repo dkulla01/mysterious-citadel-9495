@@ -69,7 +69,6 @@ $far = $rank->getFarFriends($rankedFriends);
  	echo($name . '(' . $score . ') / ');
 }*/
 
-
 $agg = new LinkAggregator($facebook);
 
 //print_r($close);
