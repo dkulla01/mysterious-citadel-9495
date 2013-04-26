@@ -25,7 +25,9 @@ class LinkAggregator {
 		if(empty($response['error']))
 		{
 			if(!empty($response)) {
+				print_r($response);
 				$mylinks = $response['data'];
+				
 			} 
 			return $mylinks;
 		} else {
