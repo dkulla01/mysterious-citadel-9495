@@ -15,6 +15,24 @@ class LinkAggregator {
 		return $this->links;
 	} 
 	
+	public function getMyLinks() {
+		$response = $this->fb->api(array(
+			'method' => 'fql.query',
+			'query' => 'SELECT title,created_time,url,summary,image_urls FROM link WHERE owner = me()'
+			//'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
+		));
+
+		if(empty($response['error']))
+		{
+			if(!empty($response)) {
+				$mylinks = $response['data'];
+			} 
+			return $mylinks;
+		} else {
+			print_r($response['error']);
+		}			
+	}
+	
 	//given a sorted list of friends, return the top 30 links, sorted by date and popularity
 	public function getLinks($friends, $relationship) {
 		

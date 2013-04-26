@@ -76,6 +76,7 @@ $agg->getLinks($far, 'big');
 //print_r($test);
 
 $sortedLinks = $agg->getSortedLinks();
+$myLinks = $agg->getMyLinks();
 
 
 $user_id = $facebook->getUser();
@@ -178,7 +179,7 @@ if ($user_id) {
 				<div class='big circle' id='big'></div>  
 				<div class='med circle' id='med'></div> 
 				<div class='small circle' id='small'></div> 
-				<div class='dot'></div>
+				<div class='dot'>YOU</div>
 				<div class='tooltip'>Hello</div>
 			</div>	
 			
@@ -198,6 +199,16 @@ if ($user_id) {
 				foreach($sortedLinks as $link) {
 				
 					echo '<article data-url="' . $link['url'] . '" class="col1 article ' . $link['class'] . '">'
+						. '<h4>' . $link['name'] . '</h4>'
+						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
+						. '<h2>' . $link['title'] . '</h2>';
+					if(!empty($link['image_urls'])) echo '<img src="' . $link['image_urls'][0] . '" alt="Image" />';					
+					echo '<p>' . $link['summary'] . '<p></article>';				
+				}
+
+				foreach($myLinks as $link) {
+				
+					echo '<article data-url="' . $link['url'] . '" class="col1 you article" style="display:none">'
 						. '<h4>' . $link['name'] . '</h4>'
 						. '<h5>' . date("F j, Y, g:i a",$link['created_time']) . '<h5>'
 						. '<h2>' . $link['title'] . '</h2>';

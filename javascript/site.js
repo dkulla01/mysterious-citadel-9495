@@ -78,6 +78,7 @@
 			$('.circle').removeClass('select');
 			$('aside h2').removeClass('select');
 			$(this).addClass('select');
+			$('.you').show();
 			$container.isotope({ filter: '.you' });
 			$title.text('Your Links');
 			scrollToTop();
