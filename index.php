@@ -46,14 +46,14 @@ $rank = new AyFbFriendRank($facebook);
 $file = 'ranked.txt';
 $rankedFriends;
 
-if(filesize($file) > 0) {
+//if(filesize($file) > 0) {
 	//echo('cached');
-	$rankedFriends = unserialize(file_get_contents($file));
-} else {
+//	$rankedFriends = unserialize(file_get_contents($file));
+//} else {
 	//echo('not cached');
-	$rankedFriends = $rank->getFriends();
-	file_put_contents($file,serialize($rankedFriends));
-}
+$rankedFriends = $rank->getFriends();
+//	file_put_contents($file,serialize($rankedFriends));
+///}
 //print_r($rankedFriends);
 
 //$ranked_data = serialize($rankedFriends);
