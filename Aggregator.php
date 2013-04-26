@@ -17,7 +17,9 @@ class LinkAggregator {
 	
 	//given a sorted list of friends, return the top 30 links, sorted by date and popularity
 	public function getLinks($friends, $relationship) {
-		
+		print_r($friends);
+		echo('////////////////////////////');
+		/*
 		$max_num = count($friends);
 		$nums = array_fill(0,$max_num,false);
 		$i = 0;
@@ -30,6 +32,7 @@ class LinkAggregator {
 				//$i++;
 				//print_r($friend);
 				echo $friend['uid'] . ' / ';
+				
 				//$link = $this->getFriendLinks($friend['uid']);
 				
 				//$i++;
@@ -42,7 +45,7 @@ class LinkAggregator {
 				}	
 			}		
 			
-		}
+		}*/
 
 		//$newlinks = $this->sortByDate($links);
 		//return $newlinks;
