@@ -75,7 +75,7 @@ class LinkAggregator {
 		if(!empty($id)) {
 			$response = $this->fb->api(array(
 				'method' => 'fql.query',
-				'query' => 'SELECT title,created_time,url,summary,picture,owner_comment FROM link WHERE owner = ' . $id . ' LIMIT 1'
+				'query' => 'SELECT title,created_time,url,summary,picture,owner_comment FROM link WHERE owner = ' . $id . 'AND now()-created_time < 604800 LIMIT 1'
 				//'query' => 'SELECT title,created_time FROM link WHERE owner = ' . $id . ' AND now()-created_time < 604800'
 			));
 	
